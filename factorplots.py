@@ -43,7 +43,7 @@ def rangepayloadplot(Rphys,mPayload,RphysC,mPayloadC):
 
     plt.xlabel('Range [km]')
     plt.ylabel('Payload [kg]')
-    #plt.show()
+    plt.show()
 
 
 rangepayloadplot(5000,5000,7000,3000)
