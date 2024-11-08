@@ -46,7 +46,7 @@ def rangepayloadplot(Rphys,mPayload,RphysC,mPayloadC):
     plt.show()
 
 
-rangepayloadplot(5000,5000,7000,3000)
+#rangepayloadplot(5000,5000,7000,3000)
 
 
 

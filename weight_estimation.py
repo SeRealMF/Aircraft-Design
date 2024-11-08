@@ -36,10 +36,26 @@ mF = fuelFactor*mTO
 #mTO = mOE + mP + mF
 mOE = mTO-mPayload-mF #empty operation weight
 
-
 #Technolocical Corrections
 payloadFactor *= 1.01#tech correction
 fuelFactor *= 0.9#tech correction
+
+
+mZF = mOE+mPayload
+
+mF_LHE = mTO-mPayload
+mC = mTO
+mB = mOE+mF
+
+dmfdR = (mTO-mOE-mPayload)/Rphys[1]
+RB = Rphys[1]+(mOE+mPayload-mZF)/dmfdR
+
+print ("Physical Range B: ", RB)
+print ("Physical Range C: ", Rphys[1])
+print ("mass B: ", mB)
+print ("mass C: ", mC)
+
+rangepayloadplot(RB,mB,Rphys[1],mC)
 
 
 mOE_LHE = mOE * 1.3# Correction for weight of Hydrogen Drivetrain
@@ -48,6 +64,7 @@ dragCorrection = 1.07; fuelEvaporationCorrection = 1.02; driveEfficiencyCorrecti
 Corrections = dragCorrection * fuelEvaporationCorrection * driveEfficiencyCorrection * energyContentCorrection
 
 fuelFactor_LHE = fuelFactor * Corrections
+
 
 #mTO_LHE*(1-fuelFactor_LHE)=mOE_LHE+mPayload
 
@@ -60,18 +77,5 @@ print ("Maximum take off mass LHE[NM,km]: ", round(mTO_LHE,2))
 #plotfactor('airplane_list.csv','Fuel factor')
 ###Range Payload plot
 ##Compute R_B
-mZF_LHE = mOE_LHE+mPayload
 
-dmfdR = (mTO-mOE_LHE-mPayload)/Rphys[1]
-RB = Rphys[1]+(mOE_LHE+mPayload-mZF_LHE)/dmfdR
-print ("Physical Range B: ", RB)
-
-
-
-
-mPayloadC = round(mPayload - 1000,1) # FALSCH NOCH BERECHNEN
-RphysC = round(Rphys[1] + 1000,1) # FALSCH NOCH BERECHNEN
-
-
-rangepayloadplot(RB,mPayload,Rphys[1],mPayload)
 
