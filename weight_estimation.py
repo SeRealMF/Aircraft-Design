@@ -1,5 +1,4 @@
-import matplotlib as mp
-import math as m
+
 from factorplots import *
 Rdp = 2500 #lt Angabe[Miles]
 Rctg = Rdp*0.05 #5% of Rdp[Miles]
@@ -55,7 +54,7 @@ print ("Physical Range C: ", Rphys[1])
 print ("mass B: ", mB)
 print ("mass C: ", mC)
 
-rangepayloadplot(RB,mB,Rphys[1],mC)
+
 
 
 mOE_LHE = mOE * 1.3# Correction for weight of Hydrogen Drivetrain
@@ -73,8 +72,9 @@ mTO_LHE = (mOE_LHE+mPayload)/(1-fuelFactor_LHE)
 print ("Physical Range: ", Rphys)
 print ("Operation Empty weight LHE: ", round(mOE_LHE,2))
 print ("Maximum take off mass LHE[NM,km]: ", round(mTO_LHE,2))
-#plotfactor('airplane_list.csv','Payload factor')
-#plotfactor('airplane_list.csv','Fuel factor')
+rangepayloadplot(RB,mB,Rphys[1],mC)
+plotfactor('airplane_list.csv','Payload factor')
+plotfactor('airplane_list.csv','Fuel factor')
 ###Range Payload plot
 ##Compute R_B
 
