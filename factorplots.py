@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 
 
+
 def getfactor(airplanelistcsv,value,Rphys):
     data = pd.read_csv(airplanelistcsv)  # csv Datei einlesen
     x = np.array(data['RB'])

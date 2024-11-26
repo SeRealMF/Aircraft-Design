@@ -22,7 +22,7 @@ beta = 1.450 * 10 ** (-6)
 
 def isa_model(h, dT):
     if h <= 11000:
-        temp = T0 + A0 * h +dT
+        temp = T0 + A0 * h + dT
         p = p0*(1+(h * A0) / T0) ** (-g0 / (A0 * R))
 
     elif 11000 < h <= 20000:
