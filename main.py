@@ -2,9 +2,17 @@ from isa import isa_model
 from Landing_Distance import getLanding_distance
 from WS_Max import getWS_Max
 
+from Climb_OEI_V1 import Climb_OEI_Graph
+#import Climb OEI
+
 import matplotlib.pyplot as plt
 import numpy as np
 
+
+#Choosen Values Climb
+Probef = 0.80
+Transef = 0.99
+TRthr = 1
 
 
 
@@ -39,3 +47,6 @@ plt.xlim([0, x_max])
 plt.xlabel('Wing Loading [N/m^2]')
 plt.ylabel('Power to Weight Ratio [W/N]')
 plt.show()
+
+
+
