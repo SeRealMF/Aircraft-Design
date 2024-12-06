@@ -1,4 +1,4 @@
-import math
+import math 
 
 
 
@@ -6,40 +6,50 @@ import math
 Probef = 0.90
 Transef = 0.99
 TRthr = 0.9
-
-def calc_dhds(ne):
-    ne = int(ne)
-    if ne == 1:
-        print("Fehler ein Triebwerk nicht möglich")
-        exit
-    elif ne == 2:
-        dhds = 0.024
-    elif ne == 3:
-        dhds = 0.027
-    elif ne >= 4:
-        dhds = 0.03
-    return(dhds)
+vvre = 100 #kts
 
 
-def Climb_OEI(ne, v2, E_ToOEI, Probef, Transef, TRthr, dhds):
-    E2nd = E_ToOEI * 0.8
 
-    p1 = dhds + E2nd
 
-    p2 = (v2)/(TRthr * Transef * Probef)
+def Clim_Serv(vvre,SeCe,dt,ma,Ecru):
+    #Conversion Faktor
+    fkt = 0.0098747 #ft/min to kts
+    mskt = 1.943844 # ms to kts
+    ftm = 3.28084 #ft to m
+    ktms = 0.51444444 #kts to ms
 
-    p3 = (ne)/(ne - 1)
+    #Descriptions
+    vvre = vvre #Minimum Vertikal Speed in ft/min
+    SeCe = SeCe #Service ceiling
+    dt = dt # differnce Temperature(ISA)
+    ma = ma #chosen Mach number for flight
+    Ecru = Ecru #Epsilon Cruise
 
-    PoWto = p1 * p2 * p3
+    SeCem = SeCe / ftm
+    from isa import isa_model
+    isa = ()
+    isa = isa_model(SeCem,dt)
+    a = isa[3]
+    vkts = (a*ma) * mskt
+    vvkts = vvre * fkt
+    vhkts = (((vkts)**2)-((vvkts)**2))**(1/2)
+    v = vkts * ktms
+    pt1 = ((vvkts/vhkts)+Ecru)
+    pt2 = (v)/(TRthr * Transef * Probef)
 
-    return(PoWto)
+    PoWtoCe = pt1 * pt2
+    return(PoWtoCe) 
+
+
+
+    
     
 
 
 
 
-def Climb_OEI_Graph(ne, v2,E_ToOEI,Probef,Transef,TRthr):
-    dhds = calc_dhds(ne)
-    PoWto = Climb_OEI(ne, v2, E_ToOEI, Probef, Transef, dhds)
-    return(PoWto)
+
+
+
+
 
