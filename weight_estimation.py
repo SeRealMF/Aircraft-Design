@@ -55,8 +55,6 @@ print ("mass B: ", mB)
 print ("mass C: ", mC)
 
 
-
-
 mOE_LHE = mOE * 1.3# Correction for weight of Hydrogen Drivetrain
 #Corrections
 dragCorrection = 1.07; fuelEvaporationCorrection = 1.02; driveEfficiencyCorrection = 0.833; energyContentCorrection = 0.357
@@ -73,6 +71,7 @@ print ("Physical Range: ", Rphys)
 print ("Operation Empty weight LHE: ", round(mOE_LHE,2))
 print ("Maximum take off mass LHE[NM,km]: ", round(mTO_LHE,2))
 rangepayloadplot(RB,mB,Rphys[1],mC)
+
 plotfactor('airplane_list.csv','Payload factor')
 plotfactor('airplane_list.csv','Fuel factor')
 ###Range Payload plot

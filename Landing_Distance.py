@@ -8,7 +8,7 @@ import math
 # n_E           ...numbers of Engines[n]
 # c_Lmac_Ldg    ...maximum lift coefficient at landing
 # epsilon_L     ...Lift anything? don't know
-# b_M           ...Braking decelleration[m/s^2]
+# b_M           ...Braking deacceleration [m/s^2]
 
 
 def getLanding_distance(W_L,S,n_E,c_Lmac_Ldg, epsilon_L,b_M):
