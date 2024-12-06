@@ -6,3 +6,4 @@ nprop = 0.9 #propeller efficeny, variable pitch
 AR = 9 #Aspect Ratio
 e0 = 0.8 #Oswald factor
 H_CRUISE = 10000 #crusing altitude in m
+N_E = 2 #number of engines
