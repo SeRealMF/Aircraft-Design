@@ -27,6 +27,7 @@ def plotfactor(airplanelistcsv,value):
     plt.ylabel(value)
     #plt.title(name)
     plt.show()
+    x=1
 
 def rangepayloadplot(Rphys,mPayload,RphysC,mPayloadC):
     A = ['A',0,mPayload]
