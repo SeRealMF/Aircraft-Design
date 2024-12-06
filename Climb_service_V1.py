@@ -1,19 +1,11 @@
-"""
-The second climb segment begins when the landing gear has been retracted. The required climb
-gradients after critical engine failure can be adimensional, especially for twin-engine aircraft. The
-required climb gradients at speed v2 are as followed (CS 25)
-
-Wichtig!!!!!!!!
-Thorkbeck schreibt G/F für W/S
-"""
 import math
 
 
 
 # Zusatzvariablen
-Probef = 0.80
+Probef = 0.90
 Transef = 0.99
-TRthr = 1
+TRthr = 0.9
 
 def calc_dhds(ne):
     ne = int(ne)
@@ -50,12 +42,4 @@ def Climb_OEI_Graph(ne, v2,E_ToOEI,Probef,Transef,TRthr):
     dhds = calc_dhds(ne)
     PoWto = Climb_OEI(ne, v2, E_ToOEI, Probef, Transef, dhds)
     return(PoWto)
-
-
-
-
-
-
-    
-
 
