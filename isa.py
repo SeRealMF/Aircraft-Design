@@ -44,3 +44,5 @@ def isa_model(h, dT):
 
     return p, temp, rho, a, mu, nu
 
+print (isa_model(0,0))
+

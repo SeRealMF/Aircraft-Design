@@ -1,5 +1,3 @@
-#Inputs(n_E,
-import isa
 from isa import isa_model
 import math
 
@@ -11,7 +9,7 @@ import math
 # b_M           ...Braking deacceleration [m/s^2]
 
 
-def getLanding_distance(W_L,S,n_E,c_Lmac_Ldg, epsilon_L,b_M):
+def getLanding_distance(W_L,S,n_E,c_Lmac_Ldg, epsilon_L,b_M, safety):
     rho = (isa_model(0,20)[2])# get density at Sea level
     rho_0 = (isa_model(0,20)[2])
     g_0 = 9.81 #m/s
@@ -53,19 +51,15 @@ def getLanding_distance(W_L,S,n_E,c_Lmac_Ldg, epsilon_L,b_M):
     s_50 = (1/(2*g_0*epsilon_L))*(v_50*v_50-v_L*v_L)+h_50/epsilon_L
 
 
-    s_R=-v_L*v_L/(2*b_M)
+    s_R=(v_L*v_L)/(2*b_M)
 
     s_L=s_50+s_R
 
-    s_L_ops = s_L*(1/0.7) # Aircraft moust be capable to stop at 70% of the Runway
+    s_L_ops = s_L*(1/safety) # Aircraft moust be capable to stop at 70% of the Runway
 
+    return (s_L_ops)
 
-    #W_L_S_max = (rho/2)*c_lmax_L*(v_50/multiplicati)
-    W_L_S_max = (rho/2)*c_Lmac_Ldg*(v_S)
-
-    return (s_L_ops, W_L_S_max)
-
-print(getLanding_distance(1,2,3,4,5,6))
+print(getLanding_distance(1,2,3,4,5,6,7))
 
 #tuwel.tuwien.ac.at/pluginfile.php/4235978/mod_resource/content/0/2024_11_04_propulsion_systems_dimensioning.pdf
 
