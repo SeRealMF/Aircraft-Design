@@ -28,13 +28,13 @@ def calcParasiticDrag():
 
     return C_D0
 
-def calcDynamicPressure(h, dT):
+def calcDynamicPressure(h: float | int, dT: float | int):
 
     q = 1/2 * isa_model(h, dT)[0] * math.pow(constants.V_CRUISE, 2)
 
     return q
 
-def calcPowerToWeightCruiseBase(wingloading):
+def calcPowerToWeightCruiseBase(wingloading: float | int):
 
     q = calcDynamicPressure(constants.H_CRUISE, dT)
 
@@ -42,7 +42,7 @@ def calcPowerToWeightCruiseBase(wingloading):
 
     return ratioP_0ToW_TO
 
-def calcPowerToWeightCruiseBaseOEI(wingloading):
+def calcPowerToWeightCruiseBaseOEI(wingloading: float | int):
 
     v_OEI = calcCruiseVelocityOEI()
     q = calcDynamicPressure(constants.H_CRUISE, dT)
