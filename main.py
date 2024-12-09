@@ -46,7 +46,7 @@ Values_calcPowerToWeightCruiseBaseOEI = []
 
 
 #x = np.linspace(0,x_max,10)
-x = range(0,x_max,10)
+x = np.linspace(10,x_max,10)
 for i in x:
     Values_Climb_OEI.append(Climb_OEI_Graph(constants.N_E, v2, epsilon_ToOEI, constants.Probef, constants.Transef, constants.TRthr))
     Values_Clim_Serv.append(Clim_Serv(constants.vvre, constants.SeCe, constants.dt, constants.ma, epsilon_cru))
@@ -57,7 +57,8 @@ plt.axvline(x = WS_Max, label = 'W/S max')
 plt.plot(x, Values_Climb_OEI)
 plt.plot(x, Values_Clim_Serv)
 plt.plot(x, Values_calcPowerToWeightCruiseBaseOEI)
-plt.xlim([0, x_max])
+plt.xlim([10, x_max])
+plt.ylim([0, 100])
 plt.xlabel('Wing Loading [N/m^2]')
 plt.ylabel('Power to Weight Ratio [W/N]')
 plt.show()
