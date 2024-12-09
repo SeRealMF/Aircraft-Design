@@ -15,6 +15,7 @@ ma = 0.5  # chosen Mach number for flight CHECK VALUE!!!!
 
 #Cruise chosen values
 epsilion = 1/18 #glide ratio 1/(L/D) - middle of range for commercial aircraft turbofans due to worse aerodynamics of LHE aircaft compared to conventional
+C_L = 0.5 #lift coefficient cruise
 
 #Choosen Values Climb OEI
 Probef = 0.80
