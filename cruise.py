@@ -14,7 +14,7 @@ epsilion = 1/18 #glide ratio 1/(L/D) - middle of range for commercial aircraft t
 C_L = 0.5 #lift coefficient cruise
 epsilion_OEI = 1.1 * epsilion #glide ratio in OEI case
 dT = 23 #TODO: was war das nochmal
-fac_k_OEI = 1,3
+fac_k_OEI = 1.3
 
 def calcInducedDrag():
 
