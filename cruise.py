@@ -13,7 +13,7 @@ k_c = 0.99 #fuel factor due to weight loss of fuel in climb
 epsilion = 1/18 #glide ratio 1/(L/D) - middle of range for commercial aircraft turbofans due to worse aerodynamics of LHE aircaft compared to conventional
 C_L = 0.5 #lift coefficient cruise
 epsilion_OEI = 1.1 * epsilion #glide ratio in OEI case
-dT = 23 #TODO: was war das nochmal
+dT = 0 #TODO: was war das nochmal
 fac_k_OEI = 1.3
 
 def calcInducedDrag():
@@ -24,7 +24,7 @@ def calcInducedDrag():
 
 def calcParasiticDrag():
 
-    C_D0 = epsilion * C_L - 1/(math.pi * constants.AR * constants.e0) * math.pow(C_L, 2) 
+    C_D0 = epsilion * C_L - (1/(math.pi * constants.AR * constants.e0) * math.pow(C_L, 2)) 
 
     return C_D0
 
