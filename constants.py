@@ -7,6 +7,7 @@ AR = 9 #Aspect Ratio
 e0 = 0.8 #Oswald factor
 H_CRUISE = 10000 #crusing altitude in m
 N_E = 2 #number of engines
+N_prop = 3 #number of Blades on the Prop
 ToOEI = 80000 #XXX NOT RIGHT VALUE XXX
 SeCe = 14000 #Service Ceiling CHECK VALUE!!!!
 vvre =  300 # Minimum Vertikal Speed in ft/min CHECK VALUE!!!!
