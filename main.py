@@ -1,21 +1,17 @@
 from isa import isa_model
 from Landing_Distance import getLanding_distance
 from WS_Max import getWS_Max
+from cruise import calcPowerToWeightCruiseBaseOEI
 
 from Climb_OEI_V1 import Climb_OEI_Graph
 #import Climb OEI
 
 from Climb_service_V1 import Clim_Serv
-#import Climb Service Ceiling
 
+import constants
 import matplotlib.pyplot as plt
 import numpy as np
 
-
-#Choosen Values Climb
-Probef = 0.80
-Transef = 0.99
-TRthr = 1
 
 
 
@@ -23,29 +19,44 @@ TRthr = 1
 
 
 #Values Landing
-v_approach = 140*1.852 #Angabe: Maximum approach speed at maximum landing mass 140 kts (CAS)
-v_50_min = v_approach*1.23 #The approach speed must be 23% higher than the minimum speed for steady-state flight,
-epsilon_L = 5#Lift, to Discuss
-S = 250 #Wing Surface Area, to Dicuss
-AR = 9 #Aspect Ratio, to Dicuss
-n_E = 2 #Number of Engines, to Discuss
-b_M = 9.81/2 #Braking deacceleration [m/s^2], g/2 is appropriate
-c_Lmac_Ldg = 2.5 #Angabe: Maximum lift coefficient in landing Configuration: 2.2 … 2.8
-safety = 0.6 #According to EASA CAT.POL.A.230 the aircraft must come to a standstill after 60% (or 70% for Turboprops) of the available landing distance.
 
 #Landing Distance
 #Angabe: Maximum landing distance 1,900 m (SL, ISA).
-print ('Landing Distance =', getLanding_distance(1000,S,n_E,c_Lmac_Ldg,epsilon_L,b_M,safety))
-WS_Max = getWS_Max(0,c_Lmac_Ldg, v_approach)
+print ('Landing Distance =', getLanding_distance(1000,constants.S,constants.N_E,constants.c_Lmac_Ldg,constants.epsilon_L,constants.b_M,constants.safety))
+WS_Max = getWS_Max(0,constants.c_Lmac_Ldg, constants.v_approach)
+
+
+v2 = 300 #NOCH VONE GEORG ZU BERECHNEN
+epsilon_ToOEI = 1 # NOCH VONE GEORG ZU BERECHNEN
+epsilon_cru = 1  # Epsilon Cruise CHECK VALUE!!!!
+Climb_OEI_Graph(constants.N_E, v2 ,epsilon_ToOEI,constants.Probef, constants.Transef, constants.TRthr)
+
+Clim_Serv(constants.vvre,constants.SeCe,constants.dt,constants.ma,epsilon_cru)
+
 print ('WS_Max =', WS_Max)
 
 
 
 #plotting
-x_max = 200000
+x_max = 7000
 
-x = np.linspace(0,x_max,10)
+Values_Climb_OEI = []
+Values_Clim_Serv = []
+Values_calcPowerToWeightCruiseBaseOEI = []
+
+
+#x = np.linspace(0,x_max,10)
+x = range(0,x_max,10)
+for i in x:
+    Values_Climb_OEI.append(Climb_OEI_Graph(constants.N_E, v2, epsilon_ToOEI, constants.Probef, constants.Transef, constants.TRthr))
+    Values_Clim_Serv.append(Clim_Serv(constants.vvre, constants.SeCe, constants.dt, constants.ma, epsilon_cru))
+    Values_calcPowerToWeightCruiseBaseOEI = calcPowerToWeightCruiseBaseOEI(x)
+
+
 plt.axvline(x = WS_Max, label = 'W/S max')
+plt.plot(x, Values_Climb_OEI)
+plt.plot(x, Values_Clim_Serv)
+plt.plot(x, Values_calcPowerToWeightCruiseBaseOEI)
 plt.xlim([0, x_max])
 plt.xlabel('Wing Loading [N/m^2]')
 plt.ylabel('Power to Weight Ratio [W/N]')

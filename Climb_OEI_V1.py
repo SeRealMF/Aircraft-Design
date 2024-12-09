@@ -48,7 +48,7 @@ def Climb_OEI(ne, v2, E_ToOEI, Probef, Transef, TRthr, dhds):
 
 def Climb_OEI_Graph(ne, v2,E_ToOEI,Probef,Transef,TRthr):
     dhds = calc_dhds(ne)
-    PoWtoClimbOEI = Climb_OEI(ne, v2, E_ToOEI, Probef, Transef, dhds)
+    PoWtoClimbOEI = Climb_OEI(ne, v2, E_ToOEI, Probef, Transef, TRthr, dhds)
     return(PoWtoClimbOEI)
 
 
