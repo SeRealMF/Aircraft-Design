@@ -13,7 +13,8 @@ vvre =  300 # Minimum Vertikal Speed in ft/min CHECK VALUE!!!!
 dt = 0  # no temperature differnce Temperature(ISA) CHECK VALUE!!!!
 ma = 0.5  # chosen Mach number for flight CHECK VALUE!!!!
 
-
+#Cruise chosen values
+epsilion = 1/18 #glide ratio 1/(L/D) - middle of range for commercial aircraft turbofans due to worse aerodynamics of LHE aircaft compared to conventional
 
 #Choosen Values Climb OEI
 Probef = 0.80

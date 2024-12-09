@@ -10,9 +10,8 @@ TR_THR_OEI = 0.95 #power throttle ratio in cruise flight with one engine inop
 
 #assumptions
 k_c = 0.99 #fuel factor due to weight loss of fuel in climb
-epsilion = 1/18 #glide ratio 1/(L/D) - middle of range for commercial aircraft turbofans due to worse aerodynamics of LHE aircaft compared to conventional
 C_L = 0.5 #lift coefficient cruise
-epsilion_OEI = 1.1 * epsilion #glide ratio in OEI case
+epsilion_OEI = 1.1 * constants.epsilion #glide ratio in OEI case
 dT = 0 
 fac_k_OEI = 1.3
 
@@ -24,7 +23,13 @@ def calcInducedDrag():
 
 def calcParasiticDrag():
 
-    C_D0 = epsilion * C_L - (1/(math.pi * constants.AR * constants.e0) * math.pow(C_L, 2)) 
+    C_D0 = constants.epsilion * C_L - (1/(math.pi * constants.AR * constants.e0) * math.pow(C_L, 2)) 
+
+    return C_D0
+
+def calcParasiticDragOEI():
+
+    C_D0 = epsilion_OEI * C_L - (1/(math.pi * constants.AR * constants.e0) * math.pow(C_L, 2)) 
 
     return C_D0
 
@@ -46,7 +51,7 @@ def calcPowerToWeightCruiseBaseOEI(wingloading: float | int):
 
     v_OEI = calcCruiseVelocityOEI()
     q = calcDynamicPressure(constants.H_CRUISE, dT)
-    C_D0 = calcParasiticDrag()
+    C_D0 = calcParasiticDragOEI()
     k_OEI = (1/(math.pi * constants.AR * constants.e0)) * fac_k_OEI
 
     ratioP_0ToW_TO = (((q * C_D0)/wingloading) + k_OEI * wingloading/q) * ((k_c * v_OEI)/(TR_THR_OEI * constants.ntrans * constants.nprop)) * (constants.N_E / (constants.N_E - 1))
