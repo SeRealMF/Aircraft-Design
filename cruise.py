@@ -3,6 +3,7 @@
 import constants
 import math
 from isa import isa_model
+import generalCalc
 
 #specific constants
 TR_THR = 0.8 #power throttle ratio in cruise flight
@@ -10,23 +11,22 @@ TR_THR_OEI = 0.95 #power throttle ratio in cruise flight with one engine inop
 
 #assumptions
 k_c = 0.99 #fuel factor due to weight loss of fuel in climb
-epsilion = 1/18 #glide ratio 1/(L/D) - middle of range for commercial aircraft turbofans due to worse aerodynamics of LHE aircaft compared to conventional
-C_L = 0.5 #lift coefficient cruise
-epsilion_OEI = 1.1 * epsilion #glide ratio in OEI case
+epsilion_OEI = 1.1 * constants.epsilion #glide ratio in OEI case
 dT = 0 
 fac_k_OEI = 1.3
 
 def calcInducedDrag():
 
-    C_Di = 1/(math.pi * constants.AR * constants.e0) * math.pow(C_L, 2)
+    C_Di = 1/(math.pi * constants.AR * constants.e0) * math.pow(constants.C_L, 2)
 
     return C_Di
 
 def calcParasiticDrag():
 
-    C_D0 = epsilion * C_L - (1/(math.pi * constants.AR * constants.e0) * math.pow(C_L, 2)) 
+    C_D0 = constants.epsilion * constants.C_L - (1/(math.pi * constants.AR * constants.e0) * math.pow(constants.C_L, 2)) 
 
     return C_D0
+
 
 def calcDynamicPressure(h: float | int, dT: float | int):
 
@@ -37,8 +37,10 @@ def calcDynamicPressure(h: float | int, dT: float | int):
 def calcPowerToWeightCruiseBase(wingloading: float | int):
 
     q = calcDynamicPressure(constants.H_CRUISE, dT)
+    k = 1/(math.pi * constants.AR * constants.e0)
+    epsililonCalc = generalCalc.calcEpsilon(q, wingloading, k)
 
-    ratioP_0ToW_TO = ((q * calcParasiticDrag())/wingloading + (1/(math.pi * constants.AR * constants.e0)) * pow(C_L, 2) * wingloading/q) * (k_c * constants.V_CRUISE)/(TR_THR * constants.ntrans * constants.nprop)
+    ratioP_0ToW_TO =  epsililonCalc * (k_c * constants.V_CRUISE)/(TR_THR * constants.ntrans * constants.nprop)
 
     return ratioP_0ToW_TO
 

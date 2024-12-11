@@ -7,6 +7,7 @@ AR = 9 #Aspect Ratio
 e0 = 0.8 #Oswald factor
 H_CRUISE = 10000 #crusing altitude in m
 N_E = 2 #number of engines
+N_prop = 3 #number of Blades on the Prop
 ToOEI = 80000 #XXX NOT RIGHT VALUE XXX
 SeCe = 14000 #Service Ceiling CHECK VALUE!!!!
 vvre =  300 # Minimum Vertikal Speed in ft/min CHECK VALUE!!!!
@@ -14,6 +15,10 @@ dt = 0  # no temperature difference Temperature(ISA) CHECK VALUE!!!!
 ma = 0.5  # chosen Mach number for flight CHECK VALUE!!!!
 n_zw = 1 #Load Multiplier Vertical Trajectory
 g0 = 9.806 #Gravitationsbeschleunigung
+
+#Cruise chosen values
+epsilion = 1/18 #glide ratio 1/(L/D) - middle of range for commercial aircraft turbofans due to worse aerodynamics of LHE aircaft compared to conventional
+C_L = 0.5 #lift coefficient cruise
 
 #Choosen Values Take Off
 u_roll = 0.03 #Rollreibungskoeffizient
