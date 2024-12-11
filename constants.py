@@ -33,6 +33,7 @@ dT_TO = 0 #Temperature difference at take off in K
 h_TO = 0 #height above mean sea level in m
 epsilon_TO = 1/10 #Take-Off Epsilon
 e_TO = 0.7 #Oswald factor with extended flaps and gear
+pwsafetyfactor = 1.05
 
 
 #Choosen Values Climb OEI

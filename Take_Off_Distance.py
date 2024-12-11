@@ -23,40 +23,43 @@ def P_W_ClimbingDistance(W_S, s3):
         T_W = (math.sin(math.atan(cons.h_scr/s3))+e_TO_OEI)/(1-1/cons.N_E)
         return round(T_W*0.5*(v_TO(W_S)[1]+v_TO(W_S)[2])/(cons.TRthr_TO*cons.ntrans*cons.n_prop_TOCl),2)
 
-#Finding the equal value between the functions
-W_S = 4000
-datenpunkte = 200
-speichervariable = 0
-disList = []
-rollDisList = []
-climDisList = []
-diffList = []
+def takeOff_pw_ws(W_S):
+        datenpunkte = 200
+        disList = []
+        rollDisList = []
+        climDisList = []
+        diffList = []
 
-for i in range (0, datenpunkte-1):
-        s = 2200/datenpunkte*(i+1)
-        disList.append(s)
-        rollDisList.append(P_W_RollingDistance(W_S,s))
-        climDisList.append(P_W_ClimbingDistance(W_S,2200-s))
-        diffList.append(round(abs(P_W_RollingDistance(W_S,s)-P_W_ClimbingDistance(W_S,2200-s)),2))
-        #print(P_W_RollingDistance(W_S,s))
-        #print(P_W_ClimbingDistance(W_S,2200-s))
-        #print(climDisList)
-        #print(diffList)
+        for i in range (0, datenpunkte-1):
+                s = 2200/datenpunkte*(i+1)
+                disList.append(s)
+                rollDisList.append(P_W_RollingDistance(W_S,s))
+                climDisList.append(P_W_ClimbingDistance(W_S,2200-s))
+                diffList.append(round(abs(P_W_RollingDistance(W_S,s)-P_W_ClimbingDistance(W_S,2200-s)),2))
 
-#print(2200/datenpunkte*(speichervariable+1), rollDisList[speichervariable], climDisList[speichervariable], diffList[speichervariable])
-#print(disList)
-#print(rollDisList)
-#print(climDisList)
+        indexmin = diffList.index(min(diffList)) #Gibt Listenindex mit kleinstem Wert aus
 
-print(min(diffList))
-print(diffList.index(min(diffList))) #Gibt Listenindex mit kleinstem Wert aus
+        print(indexmin)
+        print(rollDisList[indexmin])
+        print(climDisList[indexmin])
+        print(disList[indexmin])
 
-x = np.array(disList)
-y1 = np.array(rollDisList)
-y2 = np.array(climDisList)
-y3 = np.array(diffList)
-plt.ylim([0, 100])
+        return rollDisList[indexmin]*cons.pwsafetyfactor
+
+######################## T E S T ###########################################
+xlist =[]
+ylist=[]
+
+for w_s in range (500, 8000, 500):
+        xlist.append(w_s)
+        ylist.append(takeOff_pw_ws(w_s))
+
+x = np.array(xlist)
+y1 = np.array(ylist)
+#y2 = np.array(climDisList)
+#y3 = np.array(diffList)
+#plt.ylim([0, 100])
 plt.plot(x, y1)
-plt.plot(x, y2)
-plt.plot(x, y3)
+#plt.plot(x, y2)
+#plt.plot(x, y3)
 plt.show()
