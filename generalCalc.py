@@ -3,15 +3,22 @@ import math
 
 
 
-def calcParasiticDrag():
+def calcParasiticDrag(C_L, e0):
 
-    C_D0 = constants.epsilion * constants.C_L - (1/(math.pi * constants.AR * constants.e0) * math.pow(constants.C_L, 2)) 
+    C_D0 = constants.epsilion * C_L - (1/(math.pi * constants.AR * e0) * math.pow(constants.C_L, 2)) 
 
     return C_D0
 
-def calcEpsilon(q, wingloading, k):
+def calcFactorK(e0):
 
-    C_D0 = calcParasiticDrag()
+    k = 1/(math.pi * constants.AR * e0)
+
+    return k
+
+def calcEpsilon(q, wingloading, C_L, e0):
+
+    C_D0 = calcParasiticDrag(C_L, e0)
+    k = calcFactorK(e0)
 
     epsilionCalc = (q * C_D0)/wingloading + k * wingloading/q
 
