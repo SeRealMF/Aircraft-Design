@@ -1,41 +1,22 @@
 from PIL.GimpGradientFile import linear
 from fontTools.misc.py23 import isclose
-
 from Take_Off_Distance import takeOff_pw_ws
 from isa import isa_model
 from Landing_Distance import getLandingDistance
 from WS_Max import getWS_Max
 from cruise import calcPowerToWeightCruiseBaseOEI, calcPowerToWeightCruiseBase
-
 from Climb_OEI_V1 import Climb_OEI_Out
-#import Climb OEI
-
 from Climb_service_V1 import Clim_Serv_out
-
-import constants
 import matplotlib.pyplot as plt
 import numpy as np
 
-
-#Values Landing
-
-
-
-
-#plotting
-x_max = 7000
 
 Values_Climb_OEI = []
 Values_calcPowerToWeightCruiseBaseOEI = []
 Values_calcPowerToWeightCruiseBase = []
 Values_TO = []
-WS_Max_Landing = []
-
-
-#x = range(0,x_max,10)
+x_max = 7000#plot from 0 to this value
 WS_Values = np.linspace(100,x_max,100)
-
-
 
 for i in WS_Values:
     Values_Climb_OEI.append(Climb_OEI_Out(i))
@@ -44,7 +25,7 @@ for i in WS_Values:
     Values_TO.append(takeOff_pw_ws(i))
 
 
-
+#plotting
 
 x = WS_Values
 plt.axvline(x = getWS_Max(), color='tab:grey', label='W/S Max', linestyle='--')

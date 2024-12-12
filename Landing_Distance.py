@@ -41,7 +41,7 @@ def getLandingDistance():
         if (LandingDistance(i) > constants.s_L_max):
             return(i)
 
-print(getLandingDistance())
+#print(getLandingDistance())
 
 
 #tuwel.tuwien.ac.at/pluginfile.php/4235978/mod_resource/content/0/2024_11_04_propulsion_systems_dimensioning.pdf

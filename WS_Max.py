@@ -8,4 +8,4 @@ def getWS_Max():
     WS_Max = rho/2*constants.c_Lmax_Landing*(constants.v_L)**2
     return(WS_Max)
 
-print(getWS_Max())
+#print(getWS_Max())

@@ -71,7 +71,7 @@ def Clim_Serv_out():
     PoWtoCe = pt1 * pt2
     return(PoWtoCe)   
     
-print(Clim_Serv_out())
+#print(Clim_Serv_out())
 
 
 
