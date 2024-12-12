@@ -1,6 +1,7 @@
 #General
 Wto = 90000 #maxium takeoff weight base version in kg
-V_CRUISE = 140 #crusing speed in m/s
+M_CRUISE = 0.8 #Mach number during cruise
+# V_CRUISE = 140 #crusing speed in m/s - disused calc through general calc from mach
 ntrans = 0.99 #transmission efficency (gearbox)
 nprop = 0.9 #propeller efficeny, variable pitch.
 AR = 10 #Aspect Ratio
@@ -13,7 +14,7 @@ ToOEI = 80000 #XXX NOT RIGHT VALUE XXX
 SeCe = 14000 #Service Ceiling CHECK VALUE!!!!
 vvre =  300 # Minimum Vertikal Speed in ft/min CHECK VALUE!!!!
 dt = 0  # no temperature difference Temperature(ISA) CHECK VALUE!!!!
-ma = 0.5  # chosen Mach number for flight CHECK VALUE!!!!
+ma = 0.75  # chosen Mach number for flight CHECK VALUE!!!!
 n_zw = 1 #Load Multiplier Vertical Trajectory
 g0 = 9.806 #Gravitationsbeschleunigung
 
@@ -31,22 +32,22 @@ c_Lmax_Start = 1.8 #Coefficient of lift during Take Off, with Flaps and Slats
 f_LOF = 1.08 #Speed Coefficient to calculate v_LOF from v_s1g
 h_scr = 10.668 #35 ft obstacle height in meters
 dT_TO = 0 #Temperature difference at take off in K
-h_TO = 0 #height above mean sea level in m
+h_TO = 0 #height above mean sea level in m - airport height
 epsilon_TO = 1/18 #Take-Off Epsilon
 e_TO = 0.75 #Oswald factor with extended flaps and gear
 pwsafetyfactor = 1.05
 
 
 #Choosen Values Climb OEI
-Probef = 0.80
-Transef = 0.99
-TRthr = 1
+Probef_OEI = 0.80
+Transef_OEI= 0.99
+TRthr_OEI = 1
 
 # #Choosen Values Climb service
-Probef = 0.90
-Transef = 0.99
-TRthr = 0.9
-vvre = 100 #kts
+Probef_Se = 0.90
+Transef_Se = 0.99
+TRthr_Se = 0.9
+
 
 
 #Choosen Values Landing
