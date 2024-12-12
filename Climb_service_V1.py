@@ -43,7 +43,7 @@ def Clim_Serv(vvre,SeCe,dt,ma,Ecru):
 
 
 
-def Clim_Serv_out():
+def Clim_Serv_out(Wingloading):
     #Conversion Faktor
     #fkt = 0.0098747 #ft/min to kts
     #mskt = 1.943844 # ms to kts
@@ -55,7 +55,8 @@ def Clim_Serv_out():
     SeCe = co.SeCe #Service ceiling
     dt = co.dt # differnce Temperature(ISA)
     ma = co.ma #chosen Mach number for flight
-    Ecru = co.epsilion #Epsilon Cruise
+    
+   
 
     #SeCem = SeCe / ftm
     from isa import isa_model
@@ -65,6 +66,13 @@ def Clim_Serv_out():
     v = a*ma
     vv = vvre
     vh = (((v)**2)-((vv)**2))**(1/2)
+
+    q = ge.calcDynamicPressure(SeCe, 0, v)
+    #print(q)
+    Ecru = ge.calcEpsilon(q, Wingloading, co.C_L, co.e0)
+
+
+
     pt1 = ((vv/vh)+Ecru)
     pt2 = (v)/(co.TRthr_Se * co.Transef_Se * co.Probef_Se)
 
