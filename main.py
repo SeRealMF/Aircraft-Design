@@ -38,12 +38,11 @@ for i in WS_Values:
     Values_Clim_Serv.append(Clim_Serv_out())
     #Values_calcPowerToWeightCruiseBaseOEI = calcPowerToWeightCruiseBaseOEI(i)
     Values_TO.append(takeOff_pw_ws(i))
-    WS_Max_Landing = getLandingDistance(i)
 
 
 x=WS_Values
 plt.axvline(x = getWS_Max(), label = 'W/S max')
-#plt.axvline(x = WS_Max_Landing, label = 'W/S max Landing')
+plt.axvline(x = getLandingDistance(), label = 'W/S max Landing')
 plt.plot(x, Values_Climb_OEI)
 plt.plot(x, Values_Clim_Serv)
 plt.axvline(x, WS_Max_Landing)

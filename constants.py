@@ -51,11 +51,10 @@ vvre = 100 #kts
 
 #Choosen Values Landing
 h_50=50*0.3048 #height in Meters 50ft.
-v_s = 140*1.852 #Angabe: Maximum approach speed at maximum landing mass 140 kts (CAS)
-v_50 = 1.23*v_s #The approach speed must be 23% higher than the minimum speed for steady-state flight,
-v_approach = v_50
-if 2<=N_E<=3: v_L =  1.13*v_s
-if N_E>3: v_L =  1.08*v_s
+v_50 = 140*0.514444 #Angabe: Maximum approach speed at maximum landing mass 140 kts (CAS)
+v_s = v_50/1.23
+v_L = v_s*1.13 # for 2 Enginies, 1.08 for more Engines
+
 S = 250 #Wing Surface Area, to Dicuss
 AR = 9 #Aspect Ratio, to Dicuss
 b_M = -9.81/3 #Braking deacceleration [m/s^2], g/2 is appropriate
