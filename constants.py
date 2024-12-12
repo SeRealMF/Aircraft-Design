@@ -1,7 +1,7 @@
 #General
 Wto = 90000 #maxium takeoff weight base version in kg
 M_CRUISE = 0.8 #Mach number during cruise
-#V_CRUISE = 140 #crusing speed in m/s
+# V_CRUISE = 140 #crusing speed in m/s - disused calc through general calc from mach
 ntrans = 0.99 #transmission efficency (gearbox)
 nprop = 0.9 #propeller efficeny, variable pitch.
 AR = 10 #Aspect Ratio
@@ -14,7 +14,7 @@ ToOEI = 80000 #XXX NOT RIGHT VALUE XXX
 SeCe = 14000 #Service Ceiling CHECK VALUE!!!!
 vvre =  300 # Minimum Vertikal Speed in ft/min CHECK VALUE!!!!
 dt = 0  # no temperature difference Temperature(ISA) CHECK VALUE!!!!
-ma = 0.5  # chosen Mach number for flight CHECK VALUE!!!!
+ma = 0.75  # chosen Mach number for flight CHECK VALUE!!!!
 n_zw = 1 #Load Multiplier Vertical Trajectory
 g0 = 9.806 #Gravitationsbeschleunigung
 
@@ -38,15 +38,15 @@ pwsafetyfactor = 1.05
 
 
 #Choosen Values Climb OEI
-Probef = 0.80
-Transef = 0.99
-TRthr = 1
+Probef_OEI = 0.80
+Transef_OEI= 0.99
+TRthr_OEI = 1
 
 # #Choosen Values Climb service
-Probef = 0.90
-Transef = 0.99
-TRthr = 0.9
-vvre = 100 #kts
+Probef_Se = 0.90
+Transef_Se = 0.99
+TRthr_Se = 0.9
+
 
 
 #Choosen Values Landing
@@ -56,8 +56,9 @@ v_50 = 1.23*v_s #The approach speed must be 23% higher than the minimum speed fo
 v_approach = v_50
 if 2<=N_E<=3: v_L =  1.13*v_s
 if N_E>3: v_L =  1.08*v_s
+epsilon_L = 5#Lift, to Discuss
 S = 250 #Wing Surface Area, to Dicuss
-AR = 9 #Aspect Ratio, to Dicuss
+
 b_M = -9.81/3 #Braking deacceleration [m/s^2], g/2 is appropriate
 c_Lmax_Landing = 2.5 #Angabe: Maximum lift coefficient in landing Configuration: 2.2 … 2.8 because we have an average plane
 safety = 0.6 #According to EASA CAT.POL.A.230 the aircraft must come to a standstill after 60% (or 70% for Turboprops) of the available landing distance.

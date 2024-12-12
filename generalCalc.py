@@ -2,8 +2,8 @@ import constants
 import math
 import isa
 
-def calcVCruise(h, dT):
-    return isa.isa_model(h, dT)[3]*constants.M_CRUISE
+def calcV(h, dT, m):
+    return isa.isa_model(h, dT)[3]*m
 
 def calcParasiticDrag(C_L, e0):
 
