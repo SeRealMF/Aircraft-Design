@@ -5,11 +5,6 @@ import isa
 import cruise
 import matplotlib.pyplot as plt
 
-def v_TO(W_S):
-        vSR=math.sqrt(2*cons.n_zw*W_S/(isa.isa_model(cons.h_TO,cons.dT_TO)[2]*cons.c_Lmax_Start))
-        vLOF = 1.08*vSR
-        v2 = 1.13*vSR
-        return vSR, vLOF, v2
 
 def P_W_RollingDistance(W_S, s1):
         T_W = 1.15*W_S/(isa.g0*isa.isa_model(cons.h_TO,cons.dT_TO)[2]*s1*(1-1/(2*cons.N_E))*(1-cons.u_roll-cons.u_aero))
