@@ -51,7 +51,7 @@ plt.plot(x, Values_calcPowerToWeightCruiseBase, color='tab:purple', label='Cruis
 
 plt.plot(x, Values_TO, color='tab:pink', label='Take-off')
 plt.xlim([0, x_max])
-plt.ylim([0, 150])
+plt.ylim([0, 100])
 plt.xlabel('Wing Loading [N/m^2]')
 plt.ylabel('Power to Weight Ratio [W/N]')
 plt.legend()

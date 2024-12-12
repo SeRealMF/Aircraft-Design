@@ -46,7 +46,7 @@ def calcPowerToWeightCruiseBaseOEI(wingloading: float | int):
 def calcCruiseVelocityOEI():
     v = calcVCruise()
     q = generalCalc.calcDynamicPressure(constants.H_CRUISE, dT, v)
-    rho = isa_model(constants.H_CRUISE, dT)[2]
+    rho = isa_model(constants.H_CRUISE_OEI, dT)[2]
 
     v_OEI = math.sqrt(2 * q/rho)
 
