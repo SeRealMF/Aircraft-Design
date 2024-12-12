@@ -54,6 +54,6 @@ def calcCruiseVelocityOEI():
 
 def calcVCruise():
     
-    v = generalCalc.calcV(constants.H_CRUISE, constants.dt, constants.M_CRUISE)
+    v = generalCalc.calcV(constants.H_CRUISE, constants.dt, constants.ma)
     
     return v
