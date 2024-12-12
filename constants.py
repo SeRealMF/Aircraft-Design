@@ -1,6 +1,6 @@
 #General
 Wto = 889043 #maxium takeoff weight base version in kg
-Wto_s = 984936 #stretch
+#Wto = 984936 #STRETCH: maxium takeoff weight stretch version in kg
 # V_CRUISE = 140 #crusing speed in m/s - disused calc through general calc from mach
 ntrans = 0.99 #transmission efficency (gearbox)
 nprop = 0.9 #propeller efficeny, variable pitch.
@@ -20,6 +20,7 @@ g0 = 9.806 #Gravitationsbeschleunigung
 
 #Cruise chosen values
 epsilion = 1/18 #glide ratio 1/(L/D) - middle of range for commercial aircraft turbofans due to worse aerodynamics of LHE aircaft compared to conventional
+#epsilion = (1/18)*0.85 #STRETCH VERSION
 C_L = 0.5 #lift coefficient cruise
 
 #Choosen Values Take Off

@@ -17,6 +17,7 @@ Values_Climb_OEI = []
 Values_calcPowerToWeightCruiseBaseOEI = []
 Values_calcPowerToWeightCruiseBase = []
 Values_TO = []
+Values_Clim_Serv_out = []
 x_max = 7000#plot from 0 to this value
 WS_Values = np.linspace(100,x_max,100)
 
@@ -25,6 +26,7 @@ for i in WS_Values:
     Values_calcPowerToWeightCruiseBaseOEI.append(calcPowerToWeightCruiseBaseOEI(i))
     Values_calcPowerToWeightCruiseBase.append(calcPowerToWeightCruiseBase(i))
     Values_TO.append(takeOff_pw_ws(i))
+    Values_Clim_Serv_out.append(Clim_Serv_out(i))
 
 
 #plotting
@@ -32,8 +34,8 @@ for i in WS_Values:
 x = WS_Values
 plt.axvline(x = getWS_Max(), color='tab:grey', label='W/S Max', linestyle='--')
 plt.axvline(x = getLandingDistance(), color='tab:red', label='Landing Distance', linestyle='dashdot')
-plt.axvline(x = Clim_Serv_out(), color='tab:green', label='Service Ceiling')
 plt.axhline(y=23, color='tab:orange', label='Selected P/W ratio', linestyle='--')
+plt.plot(x,Values_Clim_Serv_out, color='tab:green', label='Service Ceiling')
 plt.plot(x, Values_Climb_OEI, color='tab:olive', label='Climb OEI')
 plt.plot(x, Values_calcPowerToWeightCruiseBaseOEI, color='tab:cyan', label='Cruise OEI')
 plt.plot(x, Values_calcPowerToWeightCruiseBase, color='tab:purple', label='Cruise')
