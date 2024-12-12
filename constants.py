@@ -59,7 +59,9 @@ epsilon_L = 5#Lift, to Discuss
 S = 250 #Wing Surface Area, to Dicuss
 AR = 9 #Aspect Ratio, to Dicuss
 b_M = 9.81/2 #Braking deacceleration [m/s^2], g/2 is appropriate
-c_Lmac_Ldg = 2.5 #Angabe: Maximum lift coefficient in landing Configuration: 2.2 … 2.8
+c_Lmax_Landing = 2.5 #Angabe: Maximum lift coefficient in landing Configuration: 2.2 … 2.8
 safety = 0.6 #According to EASA CAT.POL.A.230 the aircraft must come to a standstill after 60% (or 70% for Turboprops) of the available landing distance.
 s_L_max = 1900#Maximum Landing Distance lt. Angabe 1900m
+landing_altitude = 0
+landing_dT = 0
 

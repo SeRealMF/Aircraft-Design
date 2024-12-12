@@ -14,28 +14,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-
-
-
-
-
 #Values Landing
 
-#Landing Distance
-#Angabe: Maximum landing distance 1,900 m (SL, ISA).
-getLandingDistance(1000)
-WS_Max = getWS_Max(0,constants.c_Lmac_Ldg, constants.v_approach)
-
-
-v2 = 300 #NOCH VONE GEORG ZU BERECHNEN
-epsilon_ToOEI = 1 # NOCH VONE GEORG ZU BERECHNEN
-epsilon_cru = 1  # Epsilon Cruise CHECK VALUE!!!!
-Climb_OEI_Graph(constants.N_E, v2 ,epsilon_ToOEI,constants.Probef, constants.Transef, constants.TRthr)
-
-Clim_Serv(constants.vvre,constants.SeCe,constants.dt,constants.ma,epsilon_cru)
-
-print ('WS_Max =', WS_Max)
-
+#WS_Max_Landing_Distance = getLandingDistance()
 
 
 #plotting
@@ -48,20 +29,21 @@ Values_TO = []
 
 
 #x = range(0,x_max,10)
-x = np.linspace(0,x_max,100)
+x = np.linspace(100,x_max,100)
 
 for i in x:
-    Values_Climb_OEI.append(Climb_OEI_Graph(constants.N_E, v2, epsilon_ToOEI, constants.Probef, constants.Transef, constants.TRthr))
-    Values_Clim_Serv.append(Clim_Serv(constants.vvre, constants.SeCe, constants.dt, constants.ma, epsilon_cru))
-    Values_calcPowerToWeightCruiseBaseOEI = calcPowerToWeightCruiseBaseOEI(x)
+    #Values_Climb_OEI.append(Climb_OEI_Graph(constants.N_E, v2, epsilon_ToOEI, constants.Probef, constants.Transef, constants.TRthr))
+    #Values_Clim_Serv.append(Clim_Serv(constants.vvre, constants.SeCe, constants.dt, constants.ma, epsilon_cru))
+    #Values_calcPowerToWeightCruiseBaseOEI = calcPowerToWeightCruiseBaseOEI(x)
     Values_TO.append(takeOff_pw_ws(x))
 
 
-plt.axvline(x = WS_Max, label = 'W/S max')
-plt.plot(x, Values_Climb_OEI,'r')
-plt.plot(x, Values_Clim_Serv,'g')
-plt.plot(x, Values_calcPowerToWeightCruiseBaseOEI,'b')
-plt.plot(x, Values_TO,'s')
+plt.axvline(x = getWS_Max(), label = 'W/S max')
+#plt.axvline(x = )
+#plt.plot(x, Values_Climb_OEI,'r')
+#plt.plot(x, Values_Clim_Serv,'g')
+#plt.plot(x, Values_calcPowerToWeightCruiseBaseOEI,'b')
+#plt.plot(x, Values_TO,'s')
 plt.xlim([0, x_max])
 plt.xlabel('Wing Loading [N/m^2]')
 plt.ylabel('Power to Weight Ratio [W/N]')

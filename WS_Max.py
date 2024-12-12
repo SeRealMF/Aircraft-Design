@@ -1,10 +1,11 @@
 from isa import isa_model
+import constants
 #get maximal Wingloading at Sea level
 
-def getWS_Max(landing_altitude, c_L_maxL, v_approach):
-    rho = isa_model(landing_altitude, 0)[2]
-    print(rho)
-    WS_Max = rho/2*c_L_maxL*(v_approach)**2
+def getWS_Max():
+    rho = isa_model(constants.landing_altitude, constants.landing_dT)[2]
+    #print(rho)
+    WS_Max = rho/2*constants.c_Lmax_Landing*(constants.v_approach)**2
     return(WS_Max)
 
-#print(getWS_Max(0, 2.5, 140))
+print(getWS_Max())

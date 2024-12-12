@@ -79,7 +79,7 @@ def getLandingDistance(Wingloading):
     if s_L_ops > constants.s_L_max: return(1)
     return(0)
 
-getLandingDistance(1)
+#getLandingDistance(1)
 
 #tuwel.tuwien.ac.at/pluginfile.php/4235978/mod_resource/content/0/2024_11_04_propulsion_systems_dimensioning.pdf
 
