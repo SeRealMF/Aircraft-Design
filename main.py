@@ -4,10 +4,10 @@ from Landing_Distance import getLandingDistance
 from WS_Max import getWS_Max
 from cruise import calcPowerToWeightCruiseBaseOEI
 
-from Climb_OEI_V1 import Climb_OEI_Graph
+from Climb_OEI_V1 import Climb_OEI_Out
 #import Climb OEI
 
-from Climb_service_V1 import Clim_Serv
+from Climb_service_V1 import Clim_Serv_out
 
 import constants
 import matplotlib.pyplot as plt
@@ -16,7 +16,7 @@ import numpy as np
 
 #Values Landing
 
-#WS_Max_Landing_Distance = getLandingDistance()
+
 
 
 #plotting
@@ -29,19 +29,23 @@ Values_TO = []
 
 
 #x = range(0,x_max,10)
-x = np.linspace(100,x_max,100)
+WS_Values = np.linspace(100,x_max,100)
 
-for i in x:
-    #Values_Climb_OEI.append(Climb_OEI_Graph(constants.N_E, v2, epsilon_ToOEI, constants.Probef, constants.Transef, constants.TRthr))
-    #Values_Clim_Serv.append(Clim_Serv(constants.vvre, constants.SeCe, constants.dt, constants.ma, epsilon_cru))
-    #Values_calcPowerToWeightCruiseBaseOEI = calcPowerToWeightCruiseBaseOEI(x)
+
+
+for i in WS_Values:
+    Values_Climb_OEI.append(Climb_OEI_Out(i))
+    Values_Clim_Serv.append(Clim_Serv_out())
+    #Values_calcPowerToWeightCruiseBaseOEI = calcPowerToWeightCruiseBaseOEI(i)
     Values_TO.append(takeOff_pw_ws(i))
+    WS_Max_Landing = getLandingDistance(i)
 
 
+x=WS_Values
 plt.axvline(x = getWS_Max(), label = 'W/S max')
-#plt.axvline(x = )
-#plt.plot(x, Values_Climb_OEI,'r')
-#plt.plot(x, Values_Clim_Serv,'g')
+plt.axvline(x = WS_Max_Landing, label = 'W/S max Landing')
+plt.plot(x, Values_Climb_OEI,'r')
+plt.plot(x, Values_Clim_Serv,'g')
 #plt.plot(x, Values_calcPowerToWeightCruiseBaseOEI,'b')
 #plt.plot(x, Values_TO,'s')
 plt.xlim([0, x_max])

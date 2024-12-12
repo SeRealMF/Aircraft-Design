@@ -70,16 +70,16 @@ def getLandingDistance(Wingloading):
 
     rho = (isa_model(0,0)[2])
     s_50 = Wingloading*(1 / (2 * 9.81 * constants.epsilon_L)) * (constants.v_50 * constants.v_50 - constants.v_L * constants.v_L) + constants.h_50 / constants.epsilon_L
-    s_R = -Wingloading*(1.13*1.13) / (rho * constants.c_Lmac_Ldg * constants.b_M)
+    s_R = -Wingloading*(1.13*1.13) / (rho * constants.c_Lmax_Landing * constants.b_M)
 
     s_L = s_50 + s_R
 
     s_L_ops = s_L*(1/constants.safety)
 
-    if s_L_ops > constants.s_L_max: return(1)
-    return(0)
+    return(math.isclose(s_L_ops,constants.s_L_max, abs_tol = 100))
 
-#getLandingDistance(1)
+
+print(getLandingDistance(1))
 
 #tuwel.tuwien.ac.at/pluginfile.php/4235978/mod_resource/content/0/2024_11_04_propulsion_systems_dimensioning.pdf
 
