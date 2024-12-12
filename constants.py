@@ -1,6 +1,7 @@
 #General
 Wto = 90000 #maxium takeoff weight base version in kg
-V_CRUISE = 140 #crusing speed in m/s
+M_CRUISE = 0.8 #Mach number during cruise
+#V_CRUISE = 140 #crusing speed in m/s
 ntrans = 0.99 #transmission efficency (gearbox)
 nprop = 0.9 #propeller efficeny, variable pitch.
 AR = 10 #Aspect Ratio
