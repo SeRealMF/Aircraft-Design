@@ -2,7 +2,7 @@ from Take_Off_Distance import takeOff_pw_ws
 from isa import isa_model
 from Landing_Distance import getLandingDistance
 from WS_Max import getWS_Max
-from cruise import calcPowerToWeightCruiseBaseOEI
+from cruise import calcPowerToWeightCruiseBaseOEI, calcPowerToWeightCruiseBase
 
 from Climb_OEI_V1 import Climb_OEI_Out
 #import Climb OEI
@@ -24,6 +24,7 @@ x_max = 7000
 
 Values_Climb_OEI = []
 Values_calcPowerToWeightCruiseBaseOEI = []
+Values_calcPowerToWeightCruiseBase = []
 Values_TO = []
 WS_Max_Landing = []
 
@@ -35,19 +36,25 @@ WS_Values = np.linspace(100,x_max,100)
 for i in WS_Values:
     Values_Climb_OEI.append(Climb_OEI_Out(i))
     Values_calcPowerToWeightCruiseBaseOEI.append(calcPowerToWeightCruiseBaseOEI(i))
+    Values_calcPowerToWeightCruiseBase.append(calcPowerToWeightCruiseBase(i))
     Values_TO.append(takeOff_pw_ws(i))
 
 
+
 x = WS_Values
-plt.axvline(x = getWS_Max(), label = 'W/S max')
-plt.axvline(x = getLandingDistance(), label = 'W/S max Landing', color='tab:red')
-plt.axvline(x = Clim_Serv_out(), label = 'Clim_Serv', color='tab:green')
-plt.plot(x, Values_Climb_OEI)
-#plt.plot(x, Values_calcPowerToWeightCruiseBaseOEI)
-#plt.plot(x, Values_TO,'s')
+plt.axvline(x = getWS_Max(), color='tab:grey', label='W/S Max')
+plt.axvline(x = getLandingDistance(), color='tab:red', label='Landing Distance')
+plt.axvline(x = Clim_Serv_out(), color='tab:green', label='Service Ceiling')
+plt.plot(x, Values_Climb_OEI, color='tab:olive', label='Climb OEI')
+plt.plot(x, Values_calcPowerToWeightCruiseBaseOEI, color='tab:cyan', label='Cruise OEI')
+plt.plot(x, Values_calcPowerToWeightCruiseBase, color='tab:purple', label='Cruise')
+
+plt.plot(x, Values_TO, color='tab:pink', label='Take-off')
 plt.xlim([0, x_max])
+plt.ylim([0, 150])
 plt.xlabel('Wing Loading [N/m^2]')
 plt.ylabel('Power to Weight Ratio [W/N]')
+plt.legend()
 plt.show()
 
 

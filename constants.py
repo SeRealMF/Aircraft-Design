@@ -33,6 +33,7 @@ f_LOF = 1.08 #Speed Coefficient to calculate v_LOF from v_s1g
 h_scr = 10.668 #35 ft obstacle height in meters. CONSTANT! DO NOT CHANGE!
 dT_TO = 0 #Temperature difference at take off in K
 h_TO = 0 #height above mean sea level in m
+e_TO=0.75 #ossi
 epsilon_TO = 1/10 #Take-Off Epsilon Annahme
 pwsafetyfactor = 1.05
 
