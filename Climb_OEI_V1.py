@@ -58,7 +58,7 @@ def Climb_OEI_Out(W_S):
     k_OEI = 1/(np.pi*co.AR+co.e_TO)
     c_D_TO = co.c_Lmax_Start*co.epsilon_TO-1/(np.pi*co.AR*co.e_TO)*co.c_Lmax_Start**2
     e_TO_OEI = q_OEI * c_D_TO / W_S + k_OEI * W_S / q_OEI
-    PoWtoClimbOEI = Climb_OEI(co.N_E, gen.v_TO(W_S)[2], e_TO_OEI, co.Probef, co.Transef, co.TRthr, calc_dhds(co.N_E))
+    PoWtoClimbOEI = Climb_OEI(co.N_E, gen.v_TO(W_S)[2], e_TO_OEI, co.Probef_OEI, co.Transef_OEI, co.TRthr_OEI, calc_dhds(co.N_E))
     return(PoWtoClimbOEI)
 
 

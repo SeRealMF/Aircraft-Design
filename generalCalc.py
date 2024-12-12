@@ -2,7 +2,8 @@ import constants
 import math
 import isa
 
-
+def calcV(h, dT, m):
+    return isa.isa_model(h, dT)[3]*m
 
 def calcParasiticDrag(C_L, e0):
 

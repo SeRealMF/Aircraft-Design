@@ -67,7 +67,7 @@ def Clim_Serv_out():
     vhkts = (((vkts)**2)-((vvkts)**2))**(1/2)
     v = vkts * ktms
     pt1 = ((vvkts/vhkts)+Ecru)
-    pt2 = (v)/(TRthr * Transef * Probef)
+    pt2 = (v)/(co.TRthr_Se * co.Transef_Se * co.Probef_Se)
 
     PoWtoCe = pt1 * pt2
     return(PoWtoCe)   

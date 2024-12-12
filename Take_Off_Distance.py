@@ -45,7 +45,7 @@ def takeOff_pw_ws(W_S):
         return rollDisList[indexmin]*cons.pwsafetyfactor
 
 #################################### T E S T ###########################################
-"""xlist =[]
+xlist =[]
 ylist=[]
 
 for w_s in range (500, 8000, 500):
@@ -60,4 +60,4 @@ y1 = np.array(ylist)
 plt.plot(x, y1)
 #plt.plot(x, y2)
 #plt.plot(x, y3)
-plt.show()"""
+plt.show()
