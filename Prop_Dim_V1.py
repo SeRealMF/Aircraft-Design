@@ -20,7 +20,7 @@ def calK_prob():
 
 def Engine_power(P):
     N_E = co.N_E
-    Etha_Trans = co.Transef
+    Etha_Trans = co.Transef_OEI
     Pbr = P * Etha_Trans
     PbrE = Pbr / N_E
     return(PbrE)
