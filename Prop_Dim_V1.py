@@ -1,7 +1,8 @@
-import constants 
+import constants as co
 import math
 
-def calK_prob(N_Prop):
+def calK_prob():
+    N_Prop = co.N_prop
     K_Prop = 0
     N_Prop = int(N_Prop)
     if N_Prop < 2:
@@ -16,14 +17,16 @@ def calK_prob(N_Prop):
     
     return(K_Prop)
 
-def Engine_power(P,Etha_Trans,N_E):
+def Engine_power(P):
+    N_E = co.N_E
+    Etha_Trans = co.Transef
     Pbr = P * Etha_Trans
     PbrE = Pbr / N_E
     return(PbrE)
 
 
-def Prop_size(N_Prop,P,Etha_Trans,N_E):
-    PbrE = Engine_power(P,Etha_Trans,N_E)
-    K_Prop = calK_prob(N_Prop)
+def Prop_size(P):
+    PbrE = Engine_power(P)
+    K_Prop = calK_prob()
     dProp = K_Prop * ((PbrE)**(1/4))
     return(dProp)

@@ -49,6 +49,7 @@ vvre = 100 #kts
 
 
 #Choosen Values Landing
+h_50=50*0.3048 #height in Meters 50ft.
 v_s = 140*1.852 #Angabe: Maximum approach speed at maximum landing mass 140 kts (CAS)
 v_50 = 140*1.852 #The approach speed must be 23% higher than the minimum speed for steady-state flight,
 v_approach = v_50
@@ -60,5 +61,5 @@ AR = 9 #Aspect Ratio, to Dicuss
 b_M = 9.81/2 #Braking deacceleration [m/s^2], g/2 is appropriate
 c_Lmac_Ldg = 2.5 #Angabe: Maximum lift coefficient in landing Configuration: 2.2 … 2.8
 safety = 0.6 #According to EASA CAT.POL.A.230 the aircraft must come to a standstill after 60% (or 70% for Turboprops) of the available landing distance.
-
+s_L_max = 1900#Maximum Landing Distance lt. Angabe 1900m
 
