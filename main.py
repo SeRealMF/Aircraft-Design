@@ -35,7 +35,7 @@ for i in x:
     #Values_Climb_OEI.append(Climb_OEI_Graph(constants.N_E, v2, epsilon_ToOEI, constants.Probef, constants.Transef, constants.TRthr))
     #Values_Clim_Serv.append(Clim_Serv(constants.vvre, constants.SeCe, constants.dt, constants.ma, epsilon_cru))
     #Values_calcPowerToWeightCruiseBaseOEI = calcPowerToWeightCruiseBaseOEI(x)
-    Values_TO.append(takeOff_pw_ws(x))
+    Values_TO.append(takeOff_pw_ws(i))
 
 
 plt.axvline(x = getWS_Max(), label = 'W/S max')
