@@ -30,11 +30,10 @@ n_prop_TO = 0.7 #Propulsion Efficiency
 n_prop_TOCl = 0.8 #Propulsion Efficiency during initial climb phase
 c_Lmax_Start = 1.8 #Coefficient of lift during Take Off, with Flaps and Slats
 f_LOF = 1.08 #Speed Coefficient to calculate v_LOF from v_s1g
-h_scr = 10.668 #35 ft obstacle height in meters
+h_scr = 10.668 #35 ft obstacle height in meters. CONSTANT! DO NOT CHANGE!
 dT_TO = 0 #Temperature difference at take off in K
 h_TO = 0 #height above mean sea level in m
-epsilon_TO = 1/18 #Take-Off Epsilon
-e_TO = 0.75 #Oswald factor with extended flaps and gear
+epsilon_TO = 1/10 #Take-Off Epsilon Annahme
 pwsafetyfactor = 1.05
 
 
