@@ -1,5 +1,6 @@
 import constants
 import math
+import isa
 
 
 
@@ -17,9 +18,8 @@ def calcEpsilon(q, wingloading, k):
 
     return epsilionCalc
 
-
 def v_TO(W_S):
-        vSR=math.sqrt(2*cons.n_zw*W_S/((isa.isa_model(cons.h_TO,cons.dT_TO)[2])*cons.c_Lmax_Start))
+        vSR=math.sqrt(2*constants.n_zw*W_S/((isa.isa_model(constants.h_TO,constants.dT_TO)[2])*constants.c_Lmax_Start))
         vLOF = 1.08*vSR
         v2 = 1.13*vSR
         return vSR, vLOF, v2
