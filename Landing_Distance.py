@@ -1,5 +1,12 @@
+from urllib.request import request_host
+
+import constants
+from constants import c_Lmac_Ldg
 from isa import isa_model
 import math
+
+from weight_estimation import fuelFactor
+
 
 #W_L            ...Wingload[]
 # S             ...Wing platform area[m^2]
@@ -60,6 +67,20 @@ def getLanding_distance(W_L,S,n_E,c_Lmac_Ldg, epsilon_L,b_M, safety):
     return (s_L_ops)
 
 print(getLanding_distance(1,2,3,4,5,6,7))
+
+getLanding_Wingloading(Wingloading):
+
+    rho = (isa_model(0,0)[2])
+
+    s_50 = Wingloading(1 / (2 * g_0 * constants.epsilon_L)) * (constants.v_50 * constants.v_50_min - constants.v_L * constants.v_L) + h_50 / epsilon_L
+
+    s_R = -Wingloading*(1.13^2) / (rho * constants.c_Lmac_Ldg * b_M)
+
+    s_L = s_50 + s_R
+
+    s_L_ops = s_L*(1/safety)
+
+return (s_L_ops)
 
 #tuwel.tuwien.ac.at/pluginfile.php/4235978/mod_resource/content/0/2024_11_04_propulsion_systems_dimensioning.pdf
 
