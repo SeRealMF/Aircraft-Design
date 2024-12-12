@@ -26,7 +26,13 @@ def calcEpsilon(q, wingloading, C_L, e0):
     return epsilionCalc
 
 def v_TO(W_S):
-        vSR=math.sqrt(2*constants.n_zw*W_S/((isa.isa_model(constants.h_TO,constants.dT_TO)[2])*constants.c_Lmax_Start))
-        vLOF = 1.08*vSR
-        v2 = 1.13*vSR
-        return vSR, vLOF, v2
+    vSR=math.sqrt(2*constants.n_zw*W_S/((isa.isa_model(constants.h_TO,constants.dT_TO)[2])*constants.c_Lmax_Start))
+    vLOF = 1.08*vSR
+    v2 = 1.13*vSR
+    return vSR, vLOF, v2
+    
+def calcDynamicPressure(h: float | int, dT: float | int, v: float | int):
+
+    q = 1/2 * isa.isa_model(h, dT)[2] * math.pow(v, 2)
+
+    return q
