@@ -1,8 +1,8 @@
 import math
-import numpy as np
+#import numpy as np
 import constants as cons
 import isa
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import generalCalc as gC
 
 
