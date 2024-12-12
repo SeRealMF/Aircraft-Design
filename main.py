@@ -26,7 +26,7 @@ Values_Climb_OEI = []
 Values_Clim_Serv = []
 Values_calcPowerToWeightCruiseBaseOEI = []
 Values_TO = []
-
+WS_Max_Landing = []
 
 #x = range(0,x_max,10)
 WS_Values = np.linspace(100,x_max,100)
@@ -43,9 +43,10 @@ for i in WS_Values:
 
 x=WS_Values
 plt.axvline(x = getWS_Max(), label = 'W/S max')
-plt.axvline(x = WS_Max_Landing, label = 'W/S max Landing')
-plt.plot(x, Values_Climb_OEI,'r')
-plt.plot(x, Values_Clim_Serv,'g')
+#plt.axvline(x = WS_Max_Landing, label = 'W/S max Landing')
+plt.plot(x, Values_Climb_OEI)
+plt.plot(x, Values_Clim_Serv)
+plt.axvline(x, WS_Max_Landing)
 #plt.plot(x, Values_calcPowerToWeightCruiseBaseOEI,'b')
 #plt.plot(x, Values_TO,'s')
 plt.xlim([0, x_max])
