@@ -64,3 +64,8 @@ s_L_max = 1900#Maximum Landing Distance lt. Angabe 1900m
 landing_altitude = 0
 landing_dT = 0
 
+P_b = 20447989 #W
+P_s = 22653528 #W
+
+
+
