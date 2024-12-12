@@ -35,7 +35,7 @@ def calcPowerToWeightCruiseBase(wingloading: float | int):
 def calcPowerToWeightCruiseBaseOEI(wingloading: float | int):
 
     v_OEI = calcCruiseVelocityOEI()
-    q = generalCalc.calcDynamicPressure(constants.H_CRUISE, dT, constants.V_CRUISE)
+    q = generalCalc.calcDynamicPressure(constants.H_CRUISE_OEI, dT, constants.V_CRUISE)
     C_D0 = generalCalc.calcParasiticDrag(constants.C_L, constants.e0)
     k_OEI = generalCalc.calcFactorK(constants.e0) * fac_k_OEI
 
