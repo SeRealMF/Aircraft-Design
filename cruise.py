@@ -22,15 +22,9 @@ def calcInducedDrag():
     return C_Di
 
 
-def calcDynamicPressure(h: float | int, dT: float | int):
-
-    q = 1/2 * isa_model(h, dT)[2] * math.pow(constants.V_CRUISE, 2)
-
-    return q
-
 def calcPowerToWeightCruiseBase(wingloading: float | int):
 
-    q = calcDynamicPressure(constants.H_CRUISE, dT)
+    q = generalCalc.calcDynamicPressure(constants.H_CRUISE, dT, constants.V_CRUISE)
     k = generalCalc.calcFactorK(constants.e0)
     epsililonCalc = generalCalc.calcEpsilon(q, wingloading, constants.C_L, constants.e0)
 
@@ -41,7 +35,7 @@ def calcPowerToWeightCruiseBase(wingloading: float | int):
 def calcPowerToWeightCruiseBaseOEI(wingloading: float | int):
 
     v_OEI = calcCruiseVelocityOEI()
-    q = calcDynamicPressure(constants.H_CRUISE, dT)
+    q = generalCalc.calcDynamicPressure(constants.H_CRUISE, dT, constants.V_CRUISE)
     C_D0 = generalCalc.calcParasiticDrag(constants.C_L, constants.e0)
     k_OEI = generalCalc.calcFactorK(constants.e0) * fac_k_OEI
 
@@ -51,7 +45,7 @@ def calcPowerToWeightCruiseBaseOEI(wingloading: float | int):
 
 def calcCruiseVelocityOEI():
 
-    q = calcDynamicPressure(constants.H_CRUISE, dT)
+    q = generalCalc.calcDynamicPressure(constants.H_CRUISE, dT, constants.V_CRUISE)
     rho = isa_model(constants.H_CRUISE, dT)[2]
 
     v_OEI = math.sqrt(2 * q/rho)
