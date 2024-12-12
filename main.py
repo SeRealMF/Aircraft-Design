@@ -20,6 +20,7 @@ Values_TO = []
 Values_Clim_Serv_out = []
 x_max = 7000#plot from 0 to this value
 WS_Values = np.linspace(100,x_max,100)
+mindiff = 1
 
 for i in WS_Values:
     Values_Climb_OEI.append(Climb_OEI_Out(i))
@@ -27,20 +28,27 @@ for i in WS_Values:
     Values_calcPowerToWeightCruiseBase.append(calcPowerToWeightCruiseBase(i))
     Values_TO.append(takeOff_pw_ws(i))
     Values_Clim_Serv_out.append(Clim_Serv_out(i))
+    if (abs(calcPowerToWeightCruiseBase(i)-takeOff_pw_ws(i))<mindiff):
+        minPWpoint = [i,calcPowerToWeightCruiseBase(i)]
+        mindiff = abs(calcPowerToWeightCruiseBase(i)-takeOff_pw_ws(i))
+        print(minPWpoint)
 
+
+print(getLandingDistance())
 
 #plotting
 
 x = WS_Values
-plt.axvline(x = getWS_Max(), color='tab:grey', label='W/S Max', linestyle='--')
-plt.axvline(x = getLandingDistance(), color='tab:red', label='Landing Distance', linestyle='dashdot')
-plt.axhline(y=23, color='tab:orange', label='Selected P/W ratio', linestyle='--')
+plt.axvline(x = getWS_Max(), color='tab:grey', label='W/S Max', linestyle='dashdot')
+plt.axvline(x = getLandingDistance(), color='darkgreen', label='Landing Distance', linestyle='dashdot')
 plt.plot(x,Values_Clim_Serv_out, color='tab:green', label='Service Ceiling')
 plt.plot(x, Values_Climb_OEI, color='tab:olive', label='Climb OEI')
 plt.plot(x, Values_calcPowerToWeightCruiseBaseOEI, color='tab:cyan', label='Cruise OEI')
 plt.plot(x, Values_calcPowerToWeightCruiseBase, color='tab:purple', label='Cruise')
-#plt.plot([3300,23], label='design point')
 plt.plot(x, Values_TO, color='tab:pink', label='Take-off')
+plt.axhline(y=23, color='tab:orange', label='Selected P/W ratio', linestyle='--')
+plt.scatter(minPWpoint[0], minPWpoint[1], color='tab:brown', label='Minimal Point', zorder=2)
+plt.scatter(3300, 23, color='tab:red', label='Design Point', zorder=2)
 plt.xlim([0, x_max])
 plt.ylim([0, 100])
 plt.xlabel('Wing Loading [N/m^2]')
