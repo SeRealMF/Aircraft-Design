@@ -1,3 +1,5 @@
+from PIL.GimpGradientFile import linear
+
 from Take_Off_Distance import takeOff_pw_ws
 from isa import isa_model
 from Landing_Distance import getLandingDistance
@@ -42,8 +44,8 @@ for i in WS_Values:
 
 
 x = WS_Values
-plt.axvline(x = getWS_Max(), color='tab:grey', label='W/S Max')
-plt.axvline(x = getLandingDistance(), color='tab:red', label='Landing Distance')
+plt.axvline(x = getWS_Max(), color='tab:grey', label='W/S Max', linestyle='--')
+plt.axvline(x = getLandingDistance(), color='tab:red', label='Landing Distance', linestyle='dashdot')
 plt.axvline(x = Clim_Serv_out(), color='tab:green', label='Service Ceiling')
 plt.plot(x, Values_Climb_OEI, color='tab:olive', label='Climb OEI')
 plt.plot(x, Values_calcPowerToWeightCruiseBaseOEI, color='tab:cyan', label='Cruise OEI')
@@ -54,7 +56,7 @@ plt.xlim([0, x_max])
 plt.ylim([0, 100])
 plt.xlabel('Wing Loading [N/m^2]')
 plt.ylabel('Power to Weight Ratio [W/N]')
-plt.legend()
+plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.05),ncol=3, fancybox=True, shadow=True)
 plt.show()
 
 
