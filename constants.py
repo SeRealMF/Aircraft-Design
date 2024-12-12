@@ -1,5 +1,6 @@
 #General
-Wto = 90000 #maxium takeoff weight base version in kg
+Wto = 889043 #maxium takeoff weight base version in kg
+Wto_s = 984936 #stretch
 # V_CRUISE = 140 #crusing speed in m/s - disused calc through general calc from mach
 ntrans = 0.99 #transmission efficency (gearbox)
 nprop = 0.9 #propeller efficeny, variable pitch.
