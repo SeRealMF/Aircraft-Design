@@ -1,4 +1,5 @@
 from PIL.GimpGradientFile import linear
+from fontTools.misc.py23 import isclose
 
 from Take_Off_Distance import takeOff_pw_ws
 from isa import isa_model
@@ -30,6 +31,7 @@ Values_calcPowerToWeightCruiseBase = []
 Values_TO = []
 WS_Max_Landing = []
 
+
 #x = range(0,x_max,10)
 WS_Values = np.linspace(100,x_max,100)
 
@@ -43,14 +45,16 @@ for i in WS_Values:
 
 
 
+
 x = WS_Values
 plt.axvline(x = getWS_Max(), color='tab:grey', label='W/S Max', linestyle='--')
 plt.axvline(x = getLandingDistance(), color='tab:red', label='Landing Distance', linestyle='dashdot')
 plt.axvline(x = Clim_Serv_out(), color='tab:green', label='Service Ceiling')
+plt.axhline(y=23, color='tab:orange', label='Selected P/W ratio', linestyle='--')
 plt.plot(x, Values_Climb_OEI, color='tab:olive', label='Climb OEI')
 plt.plot(x, Values_calcPowerToWeightCruiseBaseOEI, color='tab:cyan', label='Cruise OEI')
 plt.plot(x, Values_calcPowerToWeightCruiseBase, color='tab:purple', label='Cruise')
-
+#plt.plot([3300,23], label='design point')
 plt.plot(x, Values_TO, color='tab:pink', label='Take-off')
 plt.xlim([0, x_max])
 plt.ylim([0, 100])
