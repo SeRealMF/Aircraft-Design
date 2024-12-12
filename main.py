@@ -58,10 +58,10 @@ for i in x:
 
 
 plt.axvline(x = WS_Max, label = 'W/S max')
-#plt.plot(x, Values_Climb_OEI)
-#plt.plot(x, Values_Clim_Serv)
-#plt.plot(x, Values_calcPowerToWeightCruiseBaseOEI)
-plt.plot(x, Values_TO)
+plt.plot(x, Values_Climb_OEI,'r')
+plt.plot(x, Values_Clim_Serv,'g')
+plt.plot(x, Values_calcPowerToWeightCruiseBaseOEI,'b')
+plt.plot(x, Values_TO,'s')
 plt.xlim([0, x_max])
 plt.xlabel('Wing Loading [N/m^2]')
 plt.ylabel('Power to Weight Ratio [W/N]')
