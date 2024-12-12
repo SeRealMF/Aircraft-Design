@@ -22,19 +22,19 @@ def getLanding_distance(W_L,S,n_E,c_Lmac_Ldg, epsilon_L,b_M, safety):
     g_0 = 9.81 #m/s
     h_50 = 50*0.3048 #50 feet flight level to meters
 
-    #calculating v_S...stall speed[m/s]
-    v_S = math.sqrt((2/rho*c_Lmac_Ldg)*(W_L/S))*math.sqrt(rho_0/rho)#corrected for altitude but we only need Sea Level
+    #calculating v_s...stall speed[m/s]
+    v_s = math.sqrt((2/rho*c_Lmac_Ldg)*(W_L/S))*math.sqrt(rho_0/rho)#corrected for altitude but we only need Sea Level
 
     #v_50...velocity at begin of runway altitude 50ft above runway
-    v_50 = 1.23*v_S # Taking into account the operational rule that the approach speed must be 23% higher than the minimum
+    v_50 = 1.23*v_s # Taking into account the operational rule that the approach speed must be 23% higher than the minimum
     # speed for steady-state flight, a given maximum approach speed results in a maximum landing area load of
 
     #n_E...numbers of Engines
     #v_L...speed at landing
-    #v_S...stall speed
+    #v_s...stall speed
     if n_E < 2: print("We need more Engines!")#landing speed depends on number of Engines, values for 1g stall
-    elif 2<=n_E<=3: v_L = 1.13*v_S
-    elif n_E > 3: v_L = 1.13*v_S
+    elif 2<=n_E<=3: v_L = 1.13*v_s
+    elif n_E > 3: v_L = 1.13*v_s
 
 
     #Energy balance
@@ -68,7 +68,7 @@ def getLanding_distance(W_L,S,n_E,c_Lmac_Ldg, epsilon_L,b_M, safety):
 
 print(getLanding_distance(1,2,3,4,5,6,7))
 
-getLanding_Wingloading(Wingloading):
+def getLanding_Wingloading(Wingloading):
 
     rho = (isa_model(0,0)[2])
 
@@ -80,7 +80,7 @@ getLanding_Wingloading(Wingloading):
 
     s_L_ops = s_L*(1/safety)
 
-return (s_L_ops)
+    return (s_L_ops)
 
 #tuwel.tuwien.ac.at/pluginfile.php/4235978/mod_resource/content/0/2024_11_04_propulsion_systems_dimensioning.pdf
 

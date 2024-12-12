@@ -1,3 +1,4 @@
+from Take_Off_Distance import takeOff_pw_ws
 from isa import isa_model
 from Landing_Distance import getLanding_distance
 from WS_Max import getWS_Max
@@ -43,6 +44,7 @@ x_max = 7000
 Values_Climb_OEI = []
 Values_Clim_Serv = []
 Values_calcPowerToWeightCruiseBaseOEI = []
+Values_TO = []
 
 
 #x = np.linspace(0,x_max,10)
@@ -51,12 +53,14 @@ for i in x:
     Values_Climb_OEI.append(Climb_OEI_Graph(constants.N_E, v2, epsilon_ToOEI, constants.Probef, constants.Transef, constants.TRthr))
     Values_Clim_Serv.append(Clim_Serv(constants.vvre, constants.SeCe, constants.dt, constants.ma, epsilon_cru))
     Values_calcPowerToWeightCruiseBaseOEI = calcPowerToWeightCruiseBaseOEI(x)
+    Values_TO.append(takeOff_pw_ws(x))
 
 
 plt.axvline(x = WS_Max, label = 'W/S max')
 plt.plot(x, Values_Climb_OEI)
 plt.plot(x, Values_Clim_Serv)
 plt.plot(x, Values_calcPowerToWeightCruiseBaseOEI)
+plt.plot(x, Values_TO)
 plt.xlim([0, x_max])
 plt.xlabel('Wing Loading [N/m^2]')
 plt.ylabel('Power to Weight Ratio [W/N]')

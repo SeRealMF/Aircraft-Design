@@ -51,8 +51,9 @@ vvre = 100 #kts
 #Choosen Values Landing
 v_s = 140*1.852 #Angabe: Maximum approach speed at maximum landing mass 140 kts (CAS)
 v_50 = 140*1.852 #The approach speed must be 23% higher than the minimum speed for steady-state flight,
-if 2<=N_E<=3: v_L =  1.13*v_S
-if N_E>3: v_L =  1.08*v_S
+v_approach = v_50
+if 2<=N_E<=3: v_L =  1.13*v_s
+if N_E>3: v_L =  1.08*v_s
 epsilon_L = 5#Lift, to Discuss
 S = 250 #Wing Surface Area, to Dicuss
 AR = 9 #Aspect Ratio, to Dicuss

@@ -39,10 +39,10 @@ def takeOff_pw_ws(W_S):
 
         indexmin = diffList.index(min(diffList)) #Gibt Listenindex mit kleinstem Wert aus
 
-        print(indexmin)
-        print(rollDisList[indexmin])
-        print(climDisList[indexmin])
-        print(disList[indexmin])
+        #print(indexmin)
+        #print(rollDisList[indexmin])
+        #print(climDisList[indexmin])
+        #print(disList[indexmin])
 
         return rollDisList[indexmin]*cons.pwsafetyfactor
 
@@ -62,4 +62,4 @@ y1 = np.array(ylist)
 plt.plot(x, y1)
 #plt.plot(x, y2)
 #plt.plot(x, y3)
-plt.show()
+#plt.show()
