@@ -23,7 +23,6 @@ import numpy as np
 x_max = 7000
 
 Values_Climb_OEI = []
-Values_Clim_Serv = []
 Values_calcPowerToWeightCruiseBaseOEI = []
 Values_TO = []
 WS_Max_Landing = []
@@ -35,7 +34,6 @@ WS_Values = np.linspace(100,x_max,100)
 
 for i in WS_Values:
     Values_Climb_OEI.append(Climb_OEI_Out(i))
-    Values_Clim_Serv.append(Clim_Serv_out())
     #Values_calcPowerToWeightCruiseBaseOEI = calcPowerToWeightCruiseBaseOEI(i)
     Values_TO.append(takeOff_pw_ws(i))
 
@@ -43,10 +41,11 @@ for i in WS_Values:
 x=WS_Values
 plt.axvline(x = getWS_Max(), label = 'W/S max')
 plt.axvline(x = getLandingDistance(), label = 'W/S max Landing')
+plt.axvline(x = Clim_Serv_out(), label = 'Clim_Serv')
 plt.plot(x, Values_Climb_OEI)
-plt.plot(x, Values_Clim_Serv)
+#plt.plot(x, Values_Clim_Serv)
 plt.axvline(x, WS_Max_Landing)
-#plt.plot(x, Values_calcPowerToWeightCruiseBaseOEI,'b')
+#plt.plot(x, Values_calcPowerToWeightCruiseBaseOEI)
 #plt.plot(x, Values_TO,'s')
 plt.xlim([0, x_max])
 plt.xlabel('Wing Loading [N/m^2]')

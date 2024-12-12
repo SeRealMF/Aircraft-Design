@@ -54,9 +54,7 @@ h_50=50*0.3048 #height in Meters 50ft.
 v_50 = 140*0.514444 #Angabe: Maximum approach speed at maximum landing mass 140 kts (CAS)
 v_s = v_50/1.23
 v_L = v_s*1.13 # for 2 Enginies, 1.08 for more Engines
-
 S = 250 #Wing Surface Area, to Dicuss
-AR = 9 #Aspect Ratio, to Dicuss
 b_M = -9.81/3 #Braking deacceleration [m/s^2], g/2 is appropriate
 c_Lmax_Landing = 2.5 #Angabe: Maximum lift coefficient in landing Configuration: 2.2 … 2.8 because we have an average plane
 safety = 0.6 #According to EASA CAT.POL.A.230 the aircraft must come to a standstill after 60% (or 70% for Turboprops) of the available landing distance.
