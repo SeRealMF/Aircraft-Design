@@ -1,5 +1,6 @@
 import constants as co
-import math
+
+
 
 def calK_prob():
     N_Prop = co.N_prop
