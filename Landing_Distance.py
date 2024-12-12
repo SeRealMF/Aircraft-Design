@@ -1,8 +1,10 @@
 
 import constants
-from constants import s_L_max
+from constants import s_L_max, c_Lmax_Landing
 from isa import isa_model
 import math
+
+import generalCalc
 
 
 
@@ -66,20 +68,28 @@ import math
 
 #print(getLanding_distance(1,2,3,4,5,6,7))
 
-def getLandingDistance(Wingloading):
+def LandingDistance(Wingloading):
+
 
     rho = (isa_model(0,0)[2])
-    s_50 = Wingloading*(1 / (2 * 9.81 * constants.epsilon_L)) * (constants.v_50 * constants.v_50 - constants.v_L * constants.v_L) + constants.h_50 / constants.epsilon_L
-    s_R = -Wingloading*(1.13*1.13) / (rho * constants.c_Lmax_Landing * constants.b_M)
 
+    epsilon_L = generalCalc.calcEpsilon(generalCalc.calcDynamicPressure(0,0,constants.v_L), Wingloading, c_Lmax_Landing, constants.e0)
+    s_50 = Wingloading*(1 / (2 * 9.81 * epsilon_L)) * (constants.v_50 * constants.v_50 - constants.v_L * constants.v_L) + constants.h_50 / epsilon_L
+    print(s_50)
+    s_R = (-Wingloading*1.13*1.13) / (rho * constants.c_Lmax_Landing * constants.b_M)
+    print(s_R)
     s_L = s_50 + s_R
-
+    print(s_L)
     s_L_ops = s_L*(1/constants.safety)
 
-    return(math.isclose(s_L_ops,constants.s_L_max, abs_tol = 100))
+    return(s_L_ops)
 
+def getLandingDistance(Wingloading):
+    return (math.isclose(LandingDistance(Wingloading), constants.s_L_max, abs_tol=1000))
 
-print(getLandingDistance(1))
+print (LandingDistance(100))
+#for i in range(10,10000,1):
+#    if getLandingDistance(i): print("JA")
 
 #tuwel.tuwien.ac.at/pluginfile.php/4235978/mod_resource/content/0/2024_11_04_propulsion_systems_dimensioning.pdf
 
