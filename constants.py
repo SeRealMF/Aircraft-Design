@@ -2,17 +2,38 @@
 Wto = 90000 #maxium takeoff weight base version in kg
 V_CRUISE = 140 #crusing speed in m/s
 ntrans = 0.99 #transmission efficency (gearbox)
-nprop = 0.9 #propeller efficeny, variable pitch
+nprop = 0.9 #propeller efficeny, variable pitch.
 AR = 9 #Aspect Ratio
 e0 = 0.8 #Oswald factor
 H_CRUISE = 10000 #crusing altitude in m
 N_E = 2 #number of engines
+N_prop = 3 #number of Blades on the Prop
 ToOEI = 80000 #XXX NOT RIGHT VALUE XXX
 SeCe = 14000 #Service Ceiling CHECK VALUE!!!!
 vvre =  300 # Minimum Vertikal Speed in ft/min CHECK VALUE!!!!
-dt = 0  # no temperature differnce Temperature(ISA) CHECK VALUE!!!!
+dt = 0  # no temperature difference Temperature(ISA) CHECK VALUE!!!!
 ma = 0.5  # chosen Mach number for flight CHECK VALUE!!!!
+n_zw = 1 #Load Multiplier Vertical Trajectory
+g0 = 9.806 #Gravitationsbeschleunigung
 
+#Cruise chosen values
+epsilion = 1/18 #glide ratio 1/(L/D) - middle of range for commercial aircraft turbofans due to worse aerodynamics of LHE aircaft compared to conventional
+C_L = 0.5 #lift coefficient cruise
+
+#Choosen Values Take Off
+u_roll = 0.03 #Rollreibungskoeffizient
+u_aero  = 0.13 #Luftreibungskoeffizient
+TRthr_TO = 1 #Power Throttle Ratio
+n_prop_TO = 0.7 #Propulsion Efficiency
+n_prop_TOCl = 0.8 #Propulsion Efficiency during initial climb phase
+c_Lmax_Start = 2 #Coefficient of lift during Take Off, with Flaps and Slats
+f_LOF = 1.08 #Speed Coefficient to calculate v_LOF from v_s1g
+h_scr = 10.668 #35 ft obstacle height in meters
+dT_TO = 0 #Temperature difference at take off in K
+h_TO = 0 #height above mean sea level in m
+epsilon_TO = 1/10 #Take-Off Epsilon
+e_TO = 0.7 #Oswald factor with extended flaps and gear
+pwsafetyfactor = 1.05
 
 
 #Choosen Values Climb OEI

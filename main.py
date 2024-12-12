@@ -46,12 +46,11 @@ Values_calcPowerToWeightCruiseBaseOEI = []
 
 
 #x = np.linspace(0,x_max,10)
-x = np.linspace(100,x_max,10)
+x = range(0,x_max,10)
 for i in x:
     Values_Climb_OEI.append(Climb_OEI_Graph(constants.N_E, v2, epsilon_ToOEI, constants.Probef, constants.Transef, constants.TRthr))
     Values_Clim_Serv.append(Clim_Serv(constants.vvre, constants.SeCe, constants.dt, constants.ma, epsilon_cru))
     Values_calcPowerToWeightCruiseBaseOEI = calcPowerToWeightCruiseBaseOEI(x)
-
 
 
 plt.axvline(x = WS_Max, label = 'W/S max')
