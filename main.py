@@ -1,6 +1,6 @@
 from Take_Off_Distance import takeOff_pw_ws
 from isa import isa_model
-from Landing_Distance import getLanding_distance
+from Landing_Distance import getLandingDistance
 from WS_Max import getWS_Max
 from cruise import calcPowerToWeightCruiseBaseOEI
 
@@ -23,7 +23,7 @@ import numpy as np
 
 #Landing Distance
 #Angabe: Maximum landing distance 1,900 m (SL, ISA).
-print ('Landing Distance =', getLanding_distance(1000,constants.S,constants.N_E,constants.c_Lmac_Ldg,constants.epsilon_L,constants.b_M,constants.safety))
+getLandingDistance(1000)
 WS_Max = getWS_Max(0,constants.c_Lmac_Ldg, constants.v_approach)
 
 
@@ -51,9 +51,9 @@ Values_TO = []
 x = np.linspace(0,x_max,100)
 
 for i in x:
-    #Values_Climb_OEI.append(Climb_OEI_Graph(constants.N_E, v2, epsilon_ToOEI, constants.Probef, constants.Transef, constants.TRthr))
-    #Values_Clim_Serv.append(Clim_Serv(constants.vvre, constants.SeCe, constants.dt, constants.ma, epsilon_cru))
-    #Values_calcPowerToWeightCruiseBaseOEI = calcPowerToWeightCruiseBaseOEI(x)
+    Values_Climb_OEI.append(Climb_OEI_Graph(constants.N_E, v2, epsilon_ToOEI, constants.Probef, constants.Transef, constants.TRthr))
+    Values_Clim_Serv.append(Clim_Serv(constants.vvre, constants.SeCe, constants.dt, constants.ma, epsilon_cru))
+    Values_calcPowerToWeightCruiseBaseOEI = calcPowerToWeightCruiseBaseOEI(x)
     Values_TO.append(takeOff_pw_ws(x))
 
 

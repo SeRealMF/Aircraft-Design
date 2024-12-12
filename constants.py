@@ -49,6 +49,7 @@ vvre = 100 #kts
 
 
 #Choosen Values Landing
+h_50=50*0.3048 #height in Meters 50ft.
 v_s = 140*1.852 #Angabe: Maximum approach speed at maximum landing mass 140 kts (CAS)
 v_50 = 140*1.852 #The approach speed must be 23% higher than the minimum speed for steady-state flight,
 v_approach = v_50
