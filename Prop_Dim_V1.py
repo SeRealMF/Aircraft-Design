@@ -31,3 +31,4 @@ def Prop_size(P):
     K_Prop = calK_prob()
     dProp = K_Prop * ((PbrE)**(1/4))
     return(dProp)
+

@@ -9,6 +9,8 @@ from Climb_OEI_V1 import Climb_OEI_Out
 from Climb_service_V1 import Clim_Serv_out
 import matplotlib.pyplot as plt
 import numpy as np
+import Prop_Dim_V1
+import constants as con
 
 
 Values_Climb_OEI = []
@@ -44,5 +46,8 @@ plt.ylabel('Power to Weight Ratio [W/N]')
 plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.05),ncol=3, fancybox=True, shadow=True)
 plt.show()
 
+Prop_Base = Prop_Dim_V1.Prop_size(con.P_b)
+Prop_Stretch = Prop_Dim_V1.Prop_size(con.P_s)
 
-
+print("Prop_Base",Prop_Base)
+print("Prop_Stretch",Prop_Stretch)
