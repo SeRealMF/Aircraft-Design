@@ -1,5 +1,5 @@
 #General
-Wto = 889043 #maxium takeoff weight base version in kg
+#Wto = 889043 #maxium takeoff weight base version in kg
 #Wto = 984936 #STRETCH: maxium takeoff weight stretch version in kg
 # V_CRUISE = 140 #crusing speed in m/s - disused calc through general calc from mach
 ntrans = 0.99 #transmission efficency (gearbox)
