@@ -1,6 +1,7 @@
 #General
-#Wto = 889043 #maxium takeoff weight base version in kg
-#Wto = 984936 #STRETCH: maxium takeoff weight stretch version in kg
+Wto = 889043 #maxium takeoff weight base version in N
+Wto_stretch = 100401 * 9.81 #maximum take off weight stretch version in N
+#Wto = 984936 #STRETCH: maximum takeoff weight stretch version in kg
 # V_CRUISE = 140 #crusing speed in m/s - disused calc through general calc from mach
 ntrans = 0.99 #transmission efficency (gearbox)
 nprop = 0.9 #propeller efficeny, variable pitch.
@@ -15,8 +16,10 @@ SeCe = 40000/3.28084 #Service Ceiling [m]CHECK VALUE!!!!
 vvre =  100*0.00508 # Minimum Vertikal Speed in [m/s] CHECK VALUE!!!!
 dt = 0  # no temperature difference Temperature(ISA) CHECK VALUE!!!!
 ma = 0.75  # chosen Mach number for flight CHECK VALUE!!!!
+ma_max = 0.775 #max Mach number; used for wing dimensioning
 n_zw = 1 #Load Multiplier Vertical Trajectory
 g0 = 9.806 #Gravitationsbeschleunigung
+WS = 3700 #Wing Loading as determined from power estimation
 
 #Cruise chosen values
 epsilion = 1/18 #glide ratio 1/(L/D) - middle of range for commercial aircraft turbofans due to worse aerodynamics of LHE aircaft compared to conventional
@@ -69,5 +72,21 @@ landing_dT = 0
 P_b = 20447989*(10**-3) #kW
 P_s = 22653528*(10**-3) #kW
 
+#wing area calculation
+k_r = 0.98 #fuel factor at cruise height
+k_n = 1.3 #maneuvering factor
+k_av = 1.1 #local lift coefficient increase
+k_trim = 1.1 #cl increase due to trimming
+taper = 0.275 #taper ratio lambda of wing
 
-
+#empennange dimensioning
+l_f = 50 #overall length fuselage in m
+k_lf = 0.5 #correction factor for determining distance between ACs of wing and stabilizer
+coef_h = 0.904 #volume coefficient horizontal stabilizer
+coef_v = 0.074 #volume coefficient vertical stabilizer
+AR_h = 4
+AR_v = 1.8
+taper_h = 0.3 #taper ratio horizontal stabilizer
+taper_v = 0.3 #taper ratio vertical stabilizer
+sweep_h = 10 #sweep angle of horizontal stabilizer in degrees
+sweep_v = 10 #sweep angle for vertical stabilizer in degrees
