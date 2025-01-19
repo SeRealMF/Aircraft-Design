@@ -2,6 +2,7 @@ import constants as cons
 import numpy as np
 import matplotlib as mat
 import empennage_dimensioning as emp
+import isa
 
 #1.) Drag Estimation Linear Regression aka. Roskam Method
 reg_a = -2.5229 #Roskam Regression Factor a
@@ -27,9 +28,9 @@ c_de = 0.008
 delta_cd = 0.15
 
 d_fuselage = 5
-l_fuselage = 50
+l_fuselage = 62.93
 d_prop = 4.74
-l_prop = 6
+l_prop = 4
 
 s_dw = s_wing
 s_df = 0.75 * np.pi * d_fuselage * l_fuselage
@@ -52,12 +53,36 @@ cs_dw = 0.0054 * r_w * (1 + 3 * t_c * np.cos(phi_25) ** 2)
 
 #Fuselage
 r_f = 0.65 * 1.5 * d_fuselage / l_fuselage
-w_fuselage = d_fuselage #PRELIMINARY VALUES!
-h_fuselage = d_fuselage #PRELIMINARY VALUES!
+w_fuselage = 4.73 #PRELIMINARY VALUES!
+h_fuselage = 5.34 #PRELIMINARY VALUES!
 
 cs_df = 0.0031 * r_f * l_fuselage * (w_fuselage + h_fuselage)
 
 #Empennage
 cs_de = 0.24 * (cs_dw + cs_df)
 
-#
+#Engine (Turbo Prop)
+r_n_bas = 0.1 #Regression factor
+r_n = 1 #Shape factor of air inlet 1 = ring inlet
+p_to = 20e6 #take off power, all engines @ SL, ISA
+s_n_front = 1.2 * 1.85 #frontal area of engine nacelle, reference EPI TP400 D6
+
+phi_to = p_to / s_n_front
+
+cs_dn = r_n_bas * r_n * p_to / phi_to
+
+#Undercarriage
+r_uc = 1.08 #regression factor for main landing gear embedded into fuselage nacelles
+
+#Reynolds number correction factor
+v_cruise = cons.ma * isa.isa_model(cons.H_CRUISE, cons.dt)[3]
+viscosity = isa.isa_model(cons.H_CRUISE, cons.dt)[5]
+re_fuselage = v_cruise * l_fuselage / viscosity #Reynolds number of fuselage @ cruise
+
+r_re = 47 * re_fuselage ** (-0.2)
+print(re_fuselage, r_re)
+
+#parasite drag with 3.) method
+cd0_toren = r_re * r_uc * (cs_dw + cs_df + cs_de + cs_dn) / s_wing
+
+#print(cd0_roskam, cd0_main, cd0_toren)

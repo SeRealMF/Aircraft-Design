@@ -50,7 +50,7 @@ def drag_div(cl):
     return cl_DD, M_drag_max
 
 S = wing_area(W_TO,WS)
-print(S)
+#print(S)
 #WS_stretch = round(W_TO_stretch/S,0)
 
 cl_c_b = cl_cruise(WS,M)
@@ -81,4 +81,4 @@ def wing_parameter(AR, taper):
     chord_tip = taper*chord_root
     return b, chord_mean, chord_root, chord_tip, S
 
-print(wing_parameter(cons.AR,cons.taper)[0],wing_parameter(cons.AR,cons.taper)[1],wing_parameter(cons.AR,cons.taper)[2], wing_parameter(cons.AR,cons.taper)[3])
+#print(wing_parameter(cons.AR,cons.taper)[0],wing_parameter(cons.AR,cons.taper)[1],wing_parameter(cons.AR,cons.taper)[2], wing_parameter(cons.AR,cons.taper)[3])

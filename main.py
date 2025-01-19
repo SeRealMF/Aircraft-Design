@@ -1,12 +1,16 @@
 from PIL.GimpGradientFile import linear
 from fontTools.misc.py23 import isclose
-from Take_Off_Distance import takeOff_pw_ws
+#from Take_Off_Distance import takeOff_pw_ws
 from isa import isa_model
 from Landing_Distance import getLandingDistance
 from WS_Max import getWS_Max
-from cruise import calcPowerToWeightCruiseBaseOEI, calcPowerToWeightCruiseBase
-from Climb_OEI_V1 import Climb_OEI_Out
-from Climb_service_V1 import Clim_Serv_out
+#from cruise import calcPowerToWeightCruiseBaseOEI, calcPowerToWeightCruiseBase
+#from Climb_OEI_V1 import Climb_OEI_Out
+#from Climb_service_V1 import Clim_Serv_out
+
+#Test
+from Test_Power_Calc import calcPowerToWeightCruiseBase, calcPowerToWeightCruiseBaseOEI, Climb_OEI_Out, Clim_Serv_out, takeOff_pw_ws
+
 import matplotlib.pyplot as plt
 import numpy as np
 import Prop_Dim_V1
@@ -32,6 +36,8 @@ for i in WS_Values:
         minPWpoint = [i,calcPowerToWeightCruiseBase(i)]
         mindiff = abs(calcPowerToWeightCruiseBase(i)-takeOff_pw_ws(i))
         print(minPWpoint)
+    else:
+        print("FEHLER_00")
 
 
 print(getLandingDistance())
