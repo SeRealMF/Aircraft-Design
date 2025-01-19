@@ -1,6 +1,7 @@
 #General
-Wto = 889043 #maxium takeoff weight base version in kg
-#Wto = 984936 #STRETCH: maxium takeoff weight stretch version in kg
+Wto = 889043 #maxium takeoff weight base version in N
+Wto_stretch = 100401 * 9.81 #maximum take off weight stretch version in N
+#Wto = 984936 #STRETCH: maximum takeoff weight stretch version in kg
 # V_CRUISE = 140 #crusing speed in m/s - disused calc through general calc from mach
 ntrans = 0.99 #transmission efficency (gearbox)
 nprop = 0.9 #propeller efficeny, variable pitch.
@@ -15,8 +16,10 @@ SeCe = 40000/3.28084 #Service Ceiling [m]CHECK VALUE!!!!
 vvre =  100*0.00508 # Minimum Vertikal Speed in [m/s] CHECK VALUE!!!!
 dt = 0  # no temperature difference Temperature(ISA) CHECK VALUE!!!!
 ma = 0.75  # chosen Mach number for flight CHECK VALUE!!!!
+ma_max = 0.775 #max Mach number; used for wing dimensioning
 n_zw = 1 #Load Multiplier Vertical Trajectory
 g0 = 9.806 #Gravitationsbeschleunigung
+WS = 3700 #Wing Loading as determined from power estimation
 rhoLH = 70.85 #density of liquid hydrogen in kg/m^3
 m_fStr = 6918 #fuel mass of the stretch variant in kg
 P_b = 20447989*(10**-3) #kW - (System?)Power base variant
@@ -33,13 +36,13 @@ u_aero  = 0.13 #Luftreibungskoeffizient
 TRthr_TO = 1 #Power Throttle Ratio
 n_prop_TO = 0.7 #Propulsion Efficiency
 n_prop_TOCl = 0.8 #Propulsion Efficiency during initial climb phase
-c_Lmax_Start = 1.8 #Coefficient of lift during Take Off, with Flaps and Slats
+c_Lmax_Start = 2.3 #1.8 #Coefficient of lift during Take Off, with Flaps and Slats
 f_LOF = 1.08 #Speed Coefficient to calculate v_LOF from v_s1g
 h_scr = 10.668 #35 ft obstacle height in meters. CONSTANT! DO NOT CHANGE!
 dT_TO = 0 #Temperature difference at take off in K
 h_TO = 0 #height above mean sea level in m
 e_TO=0.75 #ossi
-epsilon_TO = 1/10 #Take-Off Epsilon Annahme
+epsilon_TO = 1/10 #1/10 #Take-Off Epsilon Annahme
 pwsafetyfactor = 1.05
 
 
@@ -71,6 +74,24 @@ landing_altitude = 0
 landing_dT = 0
 
 
+#wing area calculation
+k_r = 0.98 #fuel factor at cruise height
+k_n = 1.3 #maneuvering factor
+k_av = 1.1 #local lift coefficient increase
+k_trim = 1.1 #cl increase due to trimming
+taper = 0.275 #taper ratio lambda of wing
+
+#empennange dimensioning
+l_f = 50 #overall length fuselage in m
+k_lf = 0.5 #correction factor for determining distance between ACs of wing and stabilizer
+coef_h = 0.904 #volume coefficient horizontal stabilizer
+coef_v = 0.074 #volume coefficient vertical stabilizer
+AR_h = 4
+AR_v = 1.8
+taper_h = 0.3 #taper ratio horizontal stabilizer
+taper_v = 0.3 #taper ratio vertical stabilizer
+sweep_h = 10 #sweep angle of horizontal stabilizer in degrees
+sweep_v = 10 #sweep angle for vertical stabilizer in degrees
 
 #chosen values lh calc
 safteyFacMinTankVol = 1.072
