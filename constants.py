@@ -1,5 +1,5 @@
 #General
-#Wto = 889043 #maxium takeoff weight base version in kg
+Wto = 889043 #maxium takeoff weight base version in kg
 #Wto = 984936 #STRETCH: maxium takeoff weight stretch version in kg
 # V_CRUISE = 140 #crusing speed in m/s - disused calc through general calc from mach
 ntrans = 0.99 #transmission efficency (gearbox)
@@ -17,6 +17,10 @@ dt = 0  # no temperature difference Temperature(ISA) CHECK VALUE!!!!
 ma = 0.75  # chosen Mach number for flight CHECK VALUE!!!!
 n_zw = 1 #Load Multiplier Vertical Trajectory
 g0 = 9.806 #Gravitationsbeschleunigung
+rhoLH = 70.85 #density of liquid hydrogen in kg/m^3
+m_fStr = 6918 #fuel mass of the stretch variant in kg
+P_b = 20447989*(10**-3) #kW - (System?)Power base variant
+P_s = 22653528*(10**-3) #kW - (System?)Power stretch variant
 
 #Cruise chosen values
 epsilion = 1/18 #glide ratio 1/(L/D) - middle of range for commercial aircraft turbofans due to worse aerodynamics of LHE aircaft compared to conventional
@@ -66,8 +70,7 @@ s_L_max = 1900#Maximum Landing Distance lt. Angabe 1900m
 landing_altitude = 0
 landing_dT = 0
 
-P_b = 20447989*(10**-3) #kW
-P_s = 22653528*(10**-3) #kW
 
 
-
+#chosen values lh calc
+safteyFacMinTankVol = 1.072
