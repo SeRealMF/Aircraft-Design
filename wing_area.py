@@ -50,6 +50,7 @@ def drag_div(cl):
     return cl_DD, M_drag_max
 
 S = wing_area(W_TO,WS)
+print(S)
 #WS_stretch = round(W_TO_stretch/S,0)
 
 cl_c_b = cl_cruise(WS,M)

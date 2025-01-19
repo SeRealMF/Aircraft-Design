@@ -1,8 +1,8 @@
 import math
-#import numpy as np
+import numpy as np
 import constants as cons
 import isa
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import generalCalc as gC
 
 
@@ -34,19 +34,19 @@ def takeOff_pw_ws(W_S):
         return rollDisList[indexmin]*cons.pwsafetyfactor
 
 #################################### T E S T ###########################################
-#xlist =[]
-#ylist=[]
+xlist =[]
+ylist=[]
 
-#for w_s in range (500, 8000, 500):
-#        xlist.append(w_s)
-#        ylist.append(takeOff_pw_ws(w_s))
+for w_s in range (500, 8000, 500):
+        xlist.append(w_s)
+        ylist.append(takeOff_pw_ws(w_s))
 
-#x = np.array(xlist)
-#y1 = np.array(ylist)
+x = np.array(xlist)
+y1 = np.array(ylist)
 #y2 = np.array(climDisList)
 #y3 = np.array(diffList)
-#plt.ylim([0, 50])
-#plt.plot(x, y1)
+plt.ylim([0, 50])
+plt.plot(x, y1)
 #plt.plot(x, y2)
 #plt.plot(x, y3)
-#plt.show()
+plt.show()
