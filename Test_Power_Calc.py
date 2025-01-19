@@ -1,6 +1,8 @@
 from colorsys import hls_to_rgb
 
 import numpy as np
+
+import constants as cons
 import isa
 from constants import pwsafetyfactor
 
@@ -23,12 +25,12 @@ e0 = 0.85
 
 kappa = 1/(np.pi * ar * e0)
 
-m_cruise = 0.75
-v_cruise = m_cruise * isa.isa_model(h_cruise, dt)[3]
+m_cruise_max = cons.ma_max
+v_cruise_max = m_cruise_max * isa.isa_model(h_cruise, dt)[3]
 
 def calcPowerToWeightCruiseBase(ws):
-    q = 0.5 * isa.isa_model(h_cruise, dt)[2] * v_cruise ** 2
-    pw = (q * cd0 / ws + kappa * ws / q) * kc*v_cruise / (tr_thr * n_trans * n_prop)
+    q = 0.5 * isa.isa_model(h_cruise, dt)[2] * v_cruise_max ** 2
+    pw = (q * cd0 / ws + kappa * ws / q) * kc*v_cruise_max / (tr_thr * n_trans * n_prop)
     return pw
 
 #cruise OEI
@@ -38,7 +40,7 @@ kappa_oei = 1.3 * kappa
 tr_thr_oei = 0.95
 
 def calcPowerToWeightCruiseBaseOEI(ws):
-    q_oei = 0.5 * isa.isa_model(h_cruise, dt)[2] * v_cruise ** 2
+    q_oei = 0.5 * isa.isa_model(h_cruise, dt)[2] * v_cruise_max ** 2
     v_cruise_oei = np.sqrt(2 * q_oei / isa.isa_model(h_cruise_oei,dt)[2])
     epsilon_cruise_oei = q_oei * cd0 / ws + kappa_oei * ws / q_oei
     pw = epsilon_cruise_oei * kc * v_cruise_oei / (tr_thr_oei * n_trans * n_prop) * n_e / (n_e - 1)
@@ -119,7 +121,7 @@ def Climb_OEI_Out(ws):
     return pw_out_oei
 
 def Clim_Serv_out(ws):
-    v = v_cruise
+    v = v_cruise_max
     q = 0.5 * isa.isa_model(h_max, dt)[2] * v ** 2
     epsilon_res_climb = q * cd0 / ws + kappa * ws / q
     pw = (v_v / v + epsilon_res_climb) * v / (tr_thr_res_climb * n_trans * n_prop_res_climb)

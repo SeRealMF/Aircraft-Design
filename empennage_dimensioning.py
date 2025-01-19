@@ -38,5 +38,5 @@ def vertical_wing_parameter():
     chord_tip_v = t * chord_root_v
     return S_v, b_v, chord_mean_v, chord_root_v, chord_tip_v
 
-#print(horizontal_wing_parameter())
-#print(vertical_wing_parameter())
+print(horizontal_wing_parameter())
+print(vertical_wing_parameter())

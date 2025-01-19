@@ -22,7 +22,7 @@ Values_calcPowerToWeightCruiseBaseOEI = []
 Values_calcPowerToWeightCruiseBase = []
 Values_TO = []
 Values_Clim_Serv_out = []
-x_max = 7000#plot from 0 to this value
+x_max = 9000#plot from 0 to this value
 WS_Values = np.linspace(100,x_max,100)
 mindiff = 1
 
@@ -36,8 +36,8 @@ for i in WS_Values:
         minPWpoint = [i,calcPowerToWeightCruiseBase(i)]
         mindiff = abs(calcPowerToWeightCruiseBase(i)-takeOff_pw_ws(i))
         print(minPWpoint)
-    else:
-        print("FEHLER_00")
+    #else:
+        #print("FEHLER_00")
 
 
 print(getLandingDistance())
