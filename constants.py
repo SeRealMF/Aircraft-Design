@@ -23,14 +23,19 @@ g0 = 9.806 #Gravitationsbeschleunigung
 WS = 4500 #Wing Loading as determined from power estimation
 rhoLH = 70.85 #density of liquid hydrogen in kg/m^3
 m_fStr = 6918 #fuel mass of the stretch variant in kg
+m_fBas = 6059 #fuel mass of the base variant in kg
 P_b = 20447989*(10**-3) #kW - (System?)Power base variant
 P_s = 22653528*(10**-3) #kW - (System?)Power stretch variant
+P_elNonProp = 250 * 10^3 #W Elektrische Leistung ohne Motor(en)
+P_elNonPropToMotors = 0.0625 #percent electric power relation systems to electric motors
 
 #Cruise chosen values
 epsilion = 1/18 #glide ratio 1/(L/D) - middle of range for commercial aircraft turbofans due to worse aerodynamics of LHE aircaft compared to conventional
 #epsilion = (1/18)*0.85 #STRETCH VERSION
 C_L = 0.5 #lift coefficient cruise
 e0_cruise = 0.83
+TRthr_CR = 0.8
+n_prop_CR = 0.9
 
 #Choosen Values Take Off
 u_roll = 0.03 #Rollreibungskoeffizient
@@ -98,3 +103,5 @@ sweep_v = 10 #sweep angle for vertical stabilizer in degrees
 
 #chosen values lh calc
 safteyFacMinTankVol = 1.072
+n_FcAnc = 0.93
+oversizingFc = 0.4 #percent
