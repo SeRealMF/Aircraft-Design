@@ -6,22 +6,22 @@ import constants as cons
 import isa
 from constants import pwsafetyfactor
 
-dt = 0
+dt = cons.dt
 
 #aircraft parameter fixed
-ar = 10
-n_e = 3
+ar = cons.AR
+n_e = cons.N_E
 
 #cruise
-h_cruise = 12200
+h_cruise = cons.H_CRUISE
 
 kc = 0.99
 tr_thr = 0.8
 n_trans = 0.99
 n_prop = 0.9
 
-cd0 = 0.017
-e0 = 0.85
+cd0 = cons.cd0
+e0 = cons.e0_cruise
 
 kappa = 1/(np.pi * ar * e0)
 
@@ -30,11 +30,11 @@ v_cruise_max = m_cruise_max * isa.isa_model(h_cruise, dt)[3]
 
 def calcPowerToWeightCruiseBase(ws):
     q = 0.5 * isa.isa_model(h_cruise, dt)[2] * v_cruise_max ** 2
-    pw = (q * cd0 / ws + kappa * ws / q) * kc*v_cruise_max / (tr_thr * n_trans * n_prop)
+    pw = (q * cd0 / ws + kappa * ws / q) * kc * v_cruise_max / (tr_thr * n_trans * n_prop)
     return pw
 
 #cruise OEI
-h_cruise_oei = 3050
+h_cruise_oei = cons.H_CRUISE_OEI
 
 kappa_oei = 1.3 * kappa
 tr_thr_oei = 0.95
@@ -48,8 +48,8 @@ def calcPowerToWeightCruiseBaseOEI(ws):
 
 #take off OEI
 g0 = 9.81
-h_to = 0
-dt_to = 0
+h_to = cons.h_TO
+dt_to = cons.dT_TO
 rho_0 = isa.isa_model(h_to, dt_to)[2]
 
 nzw = 1 #load factor
@@ -60,11 +60,11 @@ n_prop_to_oei = 0.8
 tr_thr_to = 1
 h_scr = 10.67
 
-pwsafetyfactor = 1.05
+pwsafetyfactor = cons.pwsafetyfactor
 
-cl_max_start = 2
-cd0_to = 0.04
-e0_to = 0.7
+cl_max_start = cons.c_Lmax_Start
+cd0_to = cons.cd0_to
+e0_to = cons.e_TO
 
 kappa_to = 1/(np.pi * e0_to * ar)
 
@@ -108,7 +108,7 @@ def takeOff_pw_ws(ws):
 
 #Climbing Phase
 v_v = 100 * 0.0058 #ft/min in m/s umgerechnet
-h_max = 13000
+h_max = cons.H_CRUISE
 
 tr_thr_res_climb = 0.9
 n_prop_res_climb = 0.9
