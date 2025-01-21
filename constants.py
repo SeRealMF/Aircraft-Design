@@ -105,3 +105,5 @@ sweep_v = 10 #sweep angle for vertical stabilizer in degrees
 safteyFacMinTankVol = 1.072
 n_FcAnc = 0.93
 oversizingFc = 0.4 #percent
+Dens_powerBostBat = 7.5 #kWh/l boooooooooooooster battery
+n_FCcool = 0.8
