@@ -37,7 +37,7 @@ def calcSystemVolume(power: float, fcLoad: float):
 
 def calcCoolingVolume(power: float, fcLoad: float):
     coolVol = power/1000 * interpolateCoolingVolRel(fcLoad)
-    return coolVol/100
+    return coolVol/1000
 
 def calcElPower(flightPhase: FlightPhase, powerToWeight: float):
     match flightPhase:
