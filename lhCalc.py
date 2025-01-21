@@ -29,15 +29,15 @@ def interpolateCoolingVolRel(fcLoad: float):
 
 def calcStackVolume(power: float, fcLoad: float):
     stackVol = power/1000 * interpolateStackVolRel(fcLoad)
-    return stackVol
+    return stackVol/1000
 
 def calcSystemVolume(power: float, fcLoad: float):
     sysVol = power/1000 * interpolateSystemVolRel(fcLoad)
-    return sysVol
+    return sysVol/1000
 
 def calcCoolingVolume(power: float, fcLoad: float):
     coolVol = power/1000 * interpolateCoolingVolRel(fcLoad)
-    return coolVol
+    return coolVol/100
 
 def calcElPower(flightPhase: FlightPhase, powerToWeight: float):
     match flightPhase:
@@ -87,7 +87,7 @@ def calcMinElPowBat(stackPowerMax: float, powerToWeight: float):
 def calcVolBat(P_Bat: float):
     V_packSing = (P_Bat/1000)/constants.Dens_powerBostBat
     V_packBat = 3.5 * V_packSing
-    return V_packBat
+    return V_packBat/1000
 
 def calcdQdTCool(P_el: float, fcLoad: float):
     n_fcStack = calcNFcStack(fcLoad)
