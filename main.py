@@ -47,7 +47,9 @@ print(getLandingDistance())
 
 #plotting
 
-powerToWeightChosen = 20
+#powerToWeightChosen = 20
+powerToWeightChosen = 18
+
 x = WS_Values
 plt.axvline(x = getWS_Max(), color='tab:grey', label='W/S Max', linestyle='dashdot')
 plt.axvline(x = getLandingDistance(), color='darkgreen', label='Landing Distance', linestyle='dashdot')
@@ -56,9 +58,9 @@ plt.plot(x, Values_Climb_OEI, color='tab:olive', label='Climb OEI')
 plt.plot(x, Values_calcPowerToWeightCruiseBaseOEI, color='tab:cyan', label='Cruise OEI')
 plt.plot(x, Values_calcPowerToWeightCruiseBase, color='tab:purple', label='Cruise')
 plt.plot(x, Values_TO, color='tab:pink', label='Take-off')
-plt.axhline(y=powerToWeightChosen, color='tab:orange', label='Selected P/W ratio', linestyle='--')
+plt.axhline(y=powerToWeightChosen, color='tab:orange', label='P/W ratio Stretch', linestyle='--')
 plt.scatter(minPWpoint[0], minPWpoint[1], color='tab:brown', label='Minimal Point', zorder=2)
-plt.scatter(constants.WS, powerToWeightChosen, color='tab:red', label='Design Point', zorder=2)
+plt.scatter(constants.WS_stretch, powerToWeightChosen, color='tab:red', label='Design Point', zorder=2)
 plt.xlim([0, x_max])
 plt.ylim([0, 50])
 plt.xlabel('Wing Loading [N/m^2]')

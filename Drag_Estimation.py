@@ -10,7 +10,7 @@ reg_c = 0.0199 #Roskam Regr. Fac. c
 reg_d = 0.7531 #Roskam Regr. Fac. d
 mto = cons.Wto / 9.81 #mass in kg. MUST BE CONVERTED TO lbs !!!
 mto_lbs = mto * 2.2046226218
-s_wing = 240.28 #wing area in m^2
+s_wing = 197.5 #wing area in m^2
 s_wing_ft2 = s_wing * 10.7639 #wing area in ft^2
 
 s_wet = 10 ** reg_c * mto_lbs ** reg_d #result in ft^2
@@ -26,8 +26,8 @@ c_d_prop = 0.006
 c_de = 0.008
 delta_cd = 0.15
 
-d_fuselage = 5
-l_fuselage = 62.93
+d_fuselage = (5.56 + 4.47) / 2
+l_fuselage = 52.3
 d_prop = 4.74
 l_prop = 4
 
@@ -45,15 +45,15 @@ cd0_main = cd0_main * (1 + delta_cd)
 #Wing
 r_w = 1 #wing form factor: 1 when self-supporting, 1.1 when strutted
 t_c = 0.12 #thickness of wing in percent
-phi_25 = 0 #sweep angle in degrees
+phi_25 = 21.4 * np.pi / 180 #sweep angle in degrees
 s = s_wing
 
 cs_dw = 0.0054 * r_w * (1 + 3 * t_c * np.cos(phi_25) ** 2)
 
 #Fuselage
 r_f = 1.3 #0.65 + 1.5 * d_fuselage / l_fuselage
-w_fuselage = 4.73 #PRELIMINARY VALUES!
-h_fuselage = 5.34 #PRELIMINARY VALUES!
+w_fuselage = 4.47
+h_fuselage = 5.55
 
 cs_df = 0.0031 * r_f * l_fuselage * (w_fuselage + h_fuselage)
 
@@ -63,7 +63,7 @@ cs_de = 0.24 * 1.1 * (cs_dw + cs_df)
 #Engine (Turbo Prop)
 r_n_bas = 0.1 #Regression factor
 r_n = 1.6 #Shape factor of air inlet 1 = ring inlet
-p_to = 20e6 #take off power, all engines @ SL, ISA
+p_to = 17.7e6 #take off power, all engines @ SL, ISA
 s_n_front = 1.2 * 1.85 #frontal area of engine nacelle, reference EPI TP400 D6
 
 phi_to = p_to / s_n_front

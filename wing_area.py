@@ -38,6 +38,9 @@ phi_25_deg = 0
 def wing_area(W_TO,WS):
     return round(W_TO/WS,2)
 
+S = wing_area(W_TO,WS)
+WS_stretch = round(W_TO_stretch/S,0)
+
 def cl_cruise(WS, M):
     return round(2*cons.k_r*WS/(isa.gamma*isa.isa_model(h_cruise,dT)[0]*M**2),4)
 
@@ -48,12 +51,10 @@ def buff_lim(cl):
 
 def drag_div(cl):
     cl_DD = round(cons.k_av * cons.k_trim * cl,4)
-    M_drag_max = round(-0.1964*cl_DD**2+0.1494*cl_DD+0.7516,3)
+    M_drag_max = round(-0.1964*cl_DD**2+0.1494*cl_DD+0.7516,3) #Regression function drag-rise limit
     return cl_DD, M_drag_max
 
-S = wing_area(W_TO,WS)
 print(S)
-WS_stretch = round(W_TO_stretch/S,0)
 
 cl_c_b = cl_cruise(WS,M)
 cl_c_s = cl_cruise(WS_stretch,M)
