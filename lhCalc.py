@@ -93,3 +93,36 @@ def calcdQdTCool(P_el: float, fcLoad: float):
     n_fcStack = calcNFcStack(fcLoad)
     dQdTcool = constants.n_FCcool * P_el * (1/n_fcStack - 1)
     return dQdTcool
+
+def calcMinWeightBat(P_Bat: float):
+    W_batSing = (P_Bat/1000)/constants.DensW_powerBostBat
+    W_bat = 3.5 * W_batSing
+    return W_bat
+
+def interpolateStackWeiRel(fcLoad: float):
+    kgPerkw33 = 0.33
+    kgPerkw100 = 0.11
+
+    k = (kgPerkw100-kgPerkw33)/0.67
+    d = kgPerkw33 - k*0.33
+    return k*fcLoad + d
+
+def interpolateSystemWeiRel(fcLoad: float):
+    #is always 0.17; could have progammed something to calculate anyways for the posibility of future changes, or leave out handover parameter - didnt feel like it
+    return 0.17
+
+def interpolateCoolingWeiRel(fcLoad: float):
+    #is always 0.33; could have progammed something to calculate anyways for the posibility of future changes, or leave out handover parameter - didnt feel like it
+    return 0.33
+
+def calcStackWeight(power: float, fcLoad: float):
+    stackWei = power/1000 * interpolateStackWeiRel(fcLoad)
+    return stackWei
+
+def calcSystemsWeight(power: float, fcLoad: float):
+    sysWei = power/1000 * interpolateSystemWeiRel(fcLoad)
+    return sysWei
+
+def calcCoolingWeight(power: float, fcLoad: float):
+    coolWei = power/1000 * interpolateCoolingWeiRel(fcLoad)
+    return coolWei

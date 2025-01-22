@@ -106,4 +106,5 @@ safteyFacMinTankVol = 1.072
 n_FcAnc = 0.93
 oversizingFc = 0.4 #percent
 Dens_powerBostBat = 7.5 #kWh/l boooooooooooooster battery
+DensW_powerBostBat = 10 #kWh/kg boooooooooooooster battery
 n_FCcool = 0.8
