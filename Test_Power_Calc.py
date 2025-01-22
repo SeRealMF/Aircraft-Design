@@ -89,7 +89,7 @@ def takeoff_pw_s3(s3, ws):
     return pw_s3
 
 def takeOff_pw_ws(ws):
-    datenpunkte = 200
+    datenpunkte = 500
     disList = []
     rollDisList = []
     climDisList = []

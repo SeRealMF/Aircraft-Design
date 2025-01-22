@@ -20,7 +20,7 @@ ma = 0.75  # chosen Mach number for flight CHECK VALUE!!!!
 ma_max = 0.8 #max Mach number; used for wing dimensioning
 n_zw = 1 #Load Multiplier Vertical Trajectory
 g0 = 9.806 #Gravitationsbeschleunigung
-WS = 4500 #Wing Loading as determined from power estimation
+WS = 5000 #Wing Loading as determined from power estimation
 rhoLH = 70.85 #density of liquid hydrogen in kg/m^3
 m_fStr = 6918 #fuel mass of the stretch variant in kg
 m_fBas = 6059 #fuel mass of the base variant in kg
@@ -90,7 +90,7 @@ k_trim = 1.1 #cl increase due to trimming
 taper = 0.275 #taper ratio lambda of wing
 
 #empennange dimensioning
-l_f = 50 #overall length fuselage in m
+l_f = 52.3 #overall length fuselage in m
 k_lf = 0.5 #correction factor for determining distance between ACs of wing and stabilizer
 coef_h = 0.904 #volume coefficient horizontal stabilizer
 coef_v = 0.074 #volume coefficient vertical stabilizer
@@ -98,8 +98,8 @@ AR_h = 4
 AR_v = 1.8
 taper_h = 0.3 #taper ratio horizontal stabilizer
 taper_v = 0.3 #taper ratio vertical stabilizer
-sweep_h = 10 #sweep angle of horizontal stabilizer in degrees
-sweep_v = 10 #sweep angle for vertical stabilizer in degrees
+sweep_h = 28 #sweep angle of horizontal stabilizer in degrees
+sweep_v = 28 #sweep angle for vertical stabilizer in degrees
 
 #chosen values lh calc
 safteyFacMinTankVol = 1.072

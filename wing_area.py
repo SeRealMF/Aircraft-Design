@@ -79,7 +79,7 @@ if M_n_b < M:
     phi_25 = math.acos((M_n_b / M) ** 2)
     phi_25_deg = round(phi_25 / np.pi * 180, 1)
 
-print(phi_25_deg)
+print("phi: ", phi_25_deg)
 
 if M_n_s < M_n_b:
     print("Profile Mach number of stretch variant lower!\nTherefore M_max for stretch must be lower!")
@@ -93,4 +93,4 @@ def wing_parameter(AR, taper):
     chord_root = 2*S/(b*(taper+1))
     chord_tip = taper*chord_root
     return b, chord_mean, chord_root, chord_tip, S
-#print(wing_parameter(cons.AR,cons.taper)[0],wing_parameter(cons.AR,cons.taper)[1],wing_parameter(cons.AR,cons.taper)[2], wing_parameter(cons.AR,cons.taper)[3])
+print(wing_parameter(cons.AR,cons.taper)[0],wing_parameter(cons.AR,cons.taper)[1],wing_parameter(cons.AR,cons.taper)[2], wing_parameter(cons.AR,cons.taper)[3])

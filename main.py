@@ -1,5 +1,7 @@
 from PIL.GimpGradientFile import linear
 from fontTools.misc.py23 import isclose
+
+import constants
 #from Take_Off_Distance import takeOff_pw_ws
 from isa import isa_model
 from Landing_Distance import getLandingDistance
@@ -56,9 +58,9 @@ plt.plot(x, Values_calcPowerToWeightCruiseBase, color='tab:purple', label='Cruis
 plt.plot(x, Values_TO, color='tab:pink', label='Take-off')
 plt.axhline(y=powerToWeightChosen, color='tab:orange', label='Selected P/W ratio', linestyle='--')
 plt.scatter(minPWpoint[0], minPWpoint[1], color='tab:brown', label='Minimal Point', zorder=2)
-plt.scatter(3300, powerToWeightChosen, color='tab:red', label='Design Point', zorder=2)
+plt.scatter(constants.WS, powerToWeightChosen, color='tab:red', label='Design Point', zorder=2)
 plt.xlim([0, x_max])
-plt.ylim([0, 100])
+plt.ylim([0, 50])
 plt.xlabel('Wing Loading [N/m^2]')
 plt.ylabel('Power to Weight Ratio [W/N]')
 plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.05),ncol=3, fancybox=True, shadow=True)
