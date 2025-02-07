@@ -52,7 +52,9 @@ cs_dw = 0.0054 * r_w * (1 + 3 * t_c * np.cos(phi_25) ** 2)
 
 #Fuselage
 r_f = 1.3 #0.65 + 1.5 * d_fuselage / l_fuselage
+#l_fuselage = 62.93 - (32-27)*0.8 #wide body stretch estimation
 w_fuselage = 4.47
+#w_fuselage = 4.47 + 1.5 #wide body stretch estimation
 h_fuselage = 5.55
 
 cs_df = 0.0031 * r_f * l_fuselage * (w_fuselage + h_fuselage)

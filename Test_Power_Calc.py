@@ -1,3 +1,4 @@
+import math
 from colorsys import hls_to_rgb
 
 import numpy as np
@@ -5,6 +6,9 @@ import numpy as np
 import constants as cons
 import isa
 from constants import pwsafetyfactor
+import matplotlib.pyplot as plt
+
+from isa import isa_model
 
 dt = cons.dt
 
@@ -126,3 +130,55 @@ def Clim_Serv_out(ws):
     epsilon_res_climb = q * cd0 / ws + kappa * ws / q
     pw = (v_v / v + epsilon_res_climb) * v / (tr_thr_res_climb * n_trans * n_prop_res_climb)
     return pw
+
+
+#Landing Phase
+v50 = 140 * 1.852 / 3.6 #Umrechnung von 140 kt in m/s
+vs = v50 / 1.23
+v_l = vs * 1.08
+h_50 = cons.h_50
+clmaxl = cons.c_Lmax_Landing
+rho_l = isa.isa_model(0, 0) [2]
+e0_l = 0.7
+cd0 = cons.cd0
+
+def total_landing_distance(ws):
+    #v_l = 1.08 * math.sqrt(2 * ws / (rho_l * clmaxl))
+    q = 0.5 * rho_l * v_l ** 2
+    kappa_l = 1/(math.pi * cons.AR * e0_l)
+    epsilon_l = q * cd0 / ws + kappa_l * ws / q
+    #print(kappa_l, 1/epsilon_l)
+    sl = ws * 1  / (rho_l * clmaxl) * (1/(cons.g0 * epsilon_l) * (1.23 ** 2 - 1.08 ** 2) - (1.08 ** 2)/(-3)) + h_50 / epsilon_l
+    return sl
+
+def plot_landing_dis_over_ws():
+    datenpunkte = 600
+    landingDisList = []
+    ws_x_achse = []
+
+    for i in range(0, datenpunkte - 1):
+        ws = 2500 + (10000 - 2500)/datenpunkte * i
+        ws_to = ws * 1 / (1 - cons.Wf / cons.Wto)
+        ws_x_achse.append(ws_to)
+        landingDisList.append(total_landing_distance(ws))
+
+    x = np.array(ws_x_achse)
+    y1 = np.array(landingDisList)
+    plt.plot(x, y1)
+    plt.axhline(y=1900, color='tab:orange', label='max. allowed landing distance', linestyle='-')
+    plt.show()
+    return 0
+
+
+
+def getMaxWsLandingDistance():
+    return 9633 #ermittelt graphisch mit funktion plot landing dis over ws
+
+def getWS_Max():
+    ws_l = 0.5 * rho_l * clmaxl * (v50 / 1.23) ** 2
+    ws_to = ws_l * 1 / (1 - cons.Wf / cons.Wto)
+    return ws_to
+
+print(getWS_Max())
+
+plot_landing_dis_over_ws()

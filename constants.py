@@ -1,7 +1,9 @@
 #General
 Wto = 889043 #maxium takeoff weight base version in N
-Wto_stretch = 100401 * 9.81 #maximum take off weight stretch version in N
-#Wto = 984936 #STRETCH: maximum takeoff weight stretch version in kg
+Wf = 6059 * 9.806 #fuel weight in Newton Base Version
+#Wto = 984936 #STRETCH: maximum takeoff weight stretch version in N
+Wto_stretch = 984936 #STRETCH: maximum takeoff weight stretch version in N
+#Wf = 6913 * 9.806 #fuel weight in N, Stretch Version
 # V_CRUISE = 140 #crusing speed in m/s - disused calc through general calc from mach
 ntrans = 0.99 #transmission efficency (gearbox)
 nprop = 0.9 #propeller efficeny, variable pitch.
@@ -20,11 +22,13 @@ cd0 = 0.017 #parasitic drag
 #cd0 = 0.019 #str
 ma = 0.75  # chosen Mach number for flight CHECK VALUE!!!!
 ma_max = 0.8 #max Mach number; used for wing dimensioning
+#ma_max = 0.785 #max speed stretch version
 #ma_max = 0.785
 n_zw = 1 #Load Multiplier Vertical Trajectory
 g0 = 9.806 #Gravitationsbeschleunigung
 WS = 4500 #Wing Loading as determined from power estimation
-WS_stretch = 5000
+#WS = 4987 #WS Stretch
+WS_stretch = 4987
 rhoLH = 70.85 #density of liquid hydrogen in kg/m^3
 m_fStr = 6918 #fuel mass of the stretch variant in kg
 m_fBas = 6059 #fuel mass of the base variant in kg

@@ -5,14 +5,14 @@ import constants
 #from Take_Off_Distance import takeOff_pw_ws
 from isa import isa_model
 from Landing_Distance import getLandingDistance
-from WS_Max import getWS_Max
+#from WS_Max import getWS_Max
 import lhCalc
 #from cruise import calcPowerToWeightCruiseBaseOEI, calcPowerToWeightCruiseBase
 #from Climb_OEI_V1 import Climb_OEI_Out
 #from Climb_service_V1 import Clim_Serv_out
 
 #Test
-from Test_Power_Calc import calcPowerToWeightCruiseBase, calcPowerToWeightCruiseBaseOEI, Climb_OEI_Out, Clim_Serv_out, takeOff_pw_ws
+from Test_Power_Calc import calcPowerToWeightCruiseBase, calcPowerToWeightCruiseBaseOEI, Climb_OEI_Out, Clim_Serv_out, takeOff_pw_ws, getWS_Max
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -43,16 +43,21 @@ for i in WS_Values:
         #print("FEHLER_00")
 
 
-print(getLandingDistance())
+#print(getLandingDistance())
 
 #plotting
 
-#powerToWeightChosen = 20
-powerToWeightChosen = 18
+powerToWeightChosen = 20
+#powerToWeightChosen = 18
+
+maxlandingWS = 10200
+#maxlandingWS = 10200
 
 x = WS_Values
 plt.axvline(x = getWS_Max(), color='tab:grey', label='W/S Max', linestyle='dashdot')
-plt.axvline(x = getLandingDistance(), color='darkgreen', label='Landing Distance', linestyle='dashdot')
+#plt.axvline(x = getLandingDistance(), color='darkgreen', label='Landing Distance', linestyle='dashdot')
+#plt.axvline(x = maxlandingWS, color='darkgreen', label='Landing Distance', linestyle='dashdot')
+plt.axvline(x = 8860, color='darkgreen', label='Landing Distance', linestyle='dashdot')
 plt.plot(x,Values_Clim_Serv_out, color='tab:green', label='Service Ceiling')
 plt.plot(x, Values_Climb_OEI, color='tab:olive', label='Climb OEI')
 plt.plot(x, Values_calcPowerToWeightCruiseBaseOEI, color='tab:cyan', label='Cruise OEI')
@@ -60,7 +65,7 @@ plt.plot(x, Values_calcPowerToWeightCruiseBase, color='tab:purple', label='Cruis
 plt.plot(x, Values_TO, color='tab:pink', label='Take-off')
 plt.axhline(y=powerToWeightChosen, color='tab:orange', label='P/W ratio Stretch', linestyle='--')
 plt.scatter(minPWpoint[0], minPWpoint[1], color='tab:brown', label='Minimal Point', zorder=2)
-plt.scatter(constants.WS_stretch, powerToWeightChosen, color='tab:red', label='Design Point', zorder=2)
+plt.scatter(constants.WS, powerToWeightChosen, color='tab:red', label='Design Point', zorder=2)
 plt.xlim([0, x_max])
 plt.ylim([0, 50])
 plt.xlabel('Wing Loading [N/m^2]')
