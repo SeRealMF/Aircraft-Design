@@ -5,19 +5,20 @@ import constants
 #from Take_Off_Distance import takeOff_pw_ws
 from isa import isa_model
 from Landing_Distance import getLandingDistance
-#from WS_Max import getWS_Max
+from WS_Max import getWS_Max
 import lhCalc
 #from cruise import calcPowerToWeightCruiseBaseOEI, calcPowerToWeightCruiseBase
 #from Climb_OEI_V1 import Climb_OEI_Out
 #from Climb_service_V1 import Clim_Serv_out
 
 #Test
-from Test_Power_Calc import calcPowerToWeightCruiseBase, calcPowerToWeightCruiseBaseOEI, Climb_OEI_Out, Clim_Serv_out, takeOff_pw_ws, getWS_Max
+from Test_Power_Calc import calcPowerToWeightCruiseBase, calcPowerToWeightCruiseBaseOEI, Climb_OEI_Out, Clim_Serv_out, takeOff_pw_ws
 
 import matplotlib.pyplot as plt
 import numpy as np
 import Prop_Dim_V1
 import constants as con
+import generalCalc
 
 
 Values_Climb_OEI = []
@@ -43,16 +44,11 @@ for i in WS_Values:
         #print("FEHLER_00")
 
 
-#print(getLandingDistance())
+print(getLandingDistance())
 
 #plotting
 
 powerToWeightChosen = 20
-#powerToWeightChosen = 18
-
-maxlandingWS = 10200
-#maxlandingWS = 10200
-
 x = WS_Values
 plt.axvline(x = getWS_Max(), color='tab:grey', label='W/S Max', linestyle='dashdot')
 #plt.axvline(x = getLandingDistance(), color='darkgreen', label='Landing Distance', linestyle='dashdot')
@@ -63,11 +59,11 @@ plt.plot(x, Values_Climb_OEI, color='tab:olive', label='Climb OEI')
 plt.plot(x, Values_calcPowerToWeightCruiseBaseOEI, color='tab:cyan', label='Cruise OEI')
 plt.plot(x, Values_calcPowerToWeightCruiseBase, color='tab:purple', label='Cruise')
 plt.plot(x, Values_TO, color='tab:pink', label='Take-off')
-plt.axhline(y=powerToWeightChosen, color='tab:orange', label='P/W ratio Stretch', linestyle='--')
+plt.axhline(y=powerToWeightChosen, color='tab:orange', label='Selected P/W ratio', linestyle='--')
 plt.scatter(minPWpoint[0], minPWpoint[1], color='tab:brown', label='Minimal Point', zorder=2)
-plt.scatter(constants.WS, powerToWeightChosen, color='tab:red', label='Design Point', zorder=2)
+plt.scatter(3300, powerToWeightChosen, color='tab:red', label='Design Point', zorder=2)
 plt.xlim([0, x_max])
-plt.ylim([0, 50])
+plt.ylim([0, 100])
 plt.xlabel('Wing Loading [N/m^2]')
 plt.ylabel('Power to Weight Ratio [W/N]')
 plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.05),ncol=3, fancybox=True, shadow=True)

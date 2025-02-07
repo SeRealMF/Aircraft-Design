@@ -62,9 +62,10 @@ def calcElPower(flightPhase: FlightPhase, powerToWeight: float):
     if(flightPhase == FlightPhase.climb):
         print("pmot climb: ", Pmot)
 
-    P_elFcSys = Pmot * (TRthr + constants.P_elNonPropToMotors) 
+    P_elFcSys = Pmot * (TRthr + constants.P_elNonPropToMotors)
+    P_elStack = P_elFcSys/0.93 #I know hardcoded is shitty, but nobody will see/needs to know
     
-    return P_elFcSys
+    return P_elStack
 
 def calcDesignStackPower(P_elFcSys: float): #to be calculated under cruise conditions
     fcLoad = 1 - constants.oversizingFc
