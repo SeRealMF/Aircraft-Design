@@ -1,8 +1,8 @@
 #General
-Wto = 889043 #maxium takeoff weight base version in N
-Wf = 6059 * 9.806 #fuel weight in Newton Base Version
+Wto = 90350 * 9.806 #maxium takeoff weight base version in N
+Wf = 5782 * 9.806 #fuel weight in Newton Base Version
 #Wto = 984936 #STRETCH: maximum takeoff weight stretch version in N
-Wto_stretch = 984936 #STRETCH: maximum takeoff weight stretch version in N
+Wto_stretch = 100094 * 9.806 #STRETCH: maximum takeoff weight stretch version in N
 #Wf = 6913 * 9.806 #fuel weight in N, Stretch Version
 # V_CRUISE = 140 #crusing speed in m/s - disused calc through general calc from mach
 ntrans = 0.99 #transmission efficency (gearbox)
@@ -30,8 +30,8 @@ WS = 4500 #Wing Loading as determined from power estimation
 #WS = 4987 #WS Stretch
 WS_stretch = 4987
 rhoLH = 70.85 #density of liquid hydrogen in kg/m^3
-m_fStr = 6918 #fuel mass of the stretch variant in kg
-m_fBas = 6059 #fuel mass of the base variant in kg
+m_fStr = 6606 #fuel mass of the stretch variant in kg
+m_fBas = 5782 #fuel mass of the base variant in kg
 P_b = 20447989*(10**-3) #kW - (System?)Power base variant
 P_s = 22653528*(10**-3) #kW - (System?)Power stretch variant
 P_elNonProp = 250 * 10^3 #W Elektrische Leistung ohne Motor(en)
