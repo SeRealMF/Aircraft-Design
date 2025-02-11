@@ -98,14 +98,14 @@ k_trim = 1.1 #cl increase due to trimming
 taper = 0.275 #taper ratio lambda of wing
 
 #empennange dimensioning
-l_f = 52.3 #overall length fuselage in m
+l_f = 54 #overall length fuselage in m
 k_lf = 0.5 #correction factor for determining distance between ACs of wing and stabilizer
 coef_h = 0.904 #volume coefficient horizontal stabilizer
 coef_v = 0.074 #volume coefficient vertical stabilizer
 AR_h = 4
-AR_v = 1.8
-taper_h = 0.3 #taper ratio horizontal stabilizer
-taper_v = 0.3 #taper ratio vertical stabilizer
+AR_v = 1.2
+taper_h = 0.4 #taper ratio horizontal stabilizer
+taper_v = 0.6 #taper ratio vertical stabilizer
 sweep_h = 28 #sweep angle of horizontal stabilizer in degrees
 sweep_v = 28 #sweep angle for vertical stabilizer in degrees
 

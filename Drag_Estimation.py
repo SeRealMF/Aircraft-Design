@@ -1,7 +1,14 @@
+import math
+
 import constants as cons
 import numpy as np
 import empennage_dimensioning as emp
 import isa
+
+v_cruise = cons.ma * isa.isa_model(cons.H_CRUISE, cons.dt)[3] #cruise speed in m/s at h_cruise, calculated from M_cruise
+
+def reynoldsCalc(c,l):
+    return c*l/isa.isa_model(cons.H_CRUISE,cons.dt)[5]
 
 #1.) Drag Estimation Linear Regression aka. Roskam Method
 reg_a = -2.5229 #Roskam Regression Factor a
@@ -26,15 +33,32 @@ c_d_prop = 0.006
 c_de = 0.008
 delta_cd = 0.15
 
+#aircraft dimensions
 d_fuselage = (5.56 + 4.47) / 2
-l_fuselage = 52.3
+l_fuselage = cons.l_f
 d_prop = 4.74
 l_prop = 4
 
+#Better coefficient estimation
+c_mean = 4.44
+re_MAC = reynoldsCalc(v_cruise, c_mean)
+#print("re_MAC: ", re_MAC)
+#c_dw = 0.0075*(9e6/re_MAC)**0.11*(s_wing+cons.l_f*4.5-cons.l_f*d_fuselage/2)/s_wing
+#print("c_dw:", c_dw)
+#c_df = 1.15*0.455/(math.log(reynoldsCalc(v_cruise,cons.l_f),10)**2.58)*(d_fuselage*math.pi*cons.l_f)/s_wing
+#print("c_df: ", c_df)
+re_MAC_emp = reynoldsCalc(v_cruise,4.48)
+#c_de = 1.35*0.0064*(9e6/re_MAC_emp)**0.11*(s_wing+cons.l_f*4.5-cons.l_f*d_fuselage/2)/s_wing
+#print("c_de: ", c_de)
+
+
 s_dw = s_wing
-s_df = 0.75 * np.pi * d_fuselage * l_fuselage
+#s_df = 0.75 * np.pi * d_fuselage * l_fuselage
+s_df = 716 #Base Fuselage Surface Area
+#s_df = 846 #Stretch Fuselage Surface Area
 s_d_prop = np.pi * d_prop * l_prop
 s_de = emp.horizontal_wing_parameter()[0] + emp.vertical_wing_parameter()[0]
+#print("S_Tailplane:", s_de)
 
 cd0_main = 1/s_wing * (c_dw * s_dw + c_df * s_df + c_d_prop * s_d_prop + c_de * s_de)
 cd0_main = cd0_main * (1 + delta_cd)
@@ -76,9 +100,9 @@ cs_dn = r_n_bas * r_n * p_to / phi_to
 r_uc = 1.08 #regression factor for main landing gear embedded into fuselage nacelles
 
 #Reynolds number correction factor
-v_cruise = cons.ma * isa.isa_model(cons.H_CRUISE, cons.dt)[3]
-viscosity = isa.isa_model(cons.H_CRUISE, cons.dt)[5]
-re_fuselage = v_cruise * l_fuselage / viscosity #Reynolds number of fuselage @ cruise
+#viscosity = isa.isa_model(cons.H_CRUISE, cons.dt)[5]
+#re_fuselage = v_cruise * l_fuselage / viscosity #Reynolds number of fuselage @ cruise
+re_fuselage = reynoldsCalc(v_cruise, l_fuselage)
 
 r_re = 47 * re_fuselage ** (-0.2)
 #print(re_fuselage, r_re)

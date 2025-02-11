@@ -29,7 +29,7 @@ def horizontal_wing_parameter():
     return S_h, b_h, chord_mean_h, chord_root_h, chord_tip_h
 
 def vertical_wing_parameter():
-    AR = cons.AR_h
+    AR = cons.AR_v
     t = cons.taper_v
     S_v = vertical_area()
     b_v = math.sqrt(AR * S_v)
