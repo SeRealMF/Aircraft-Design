@@ -56,7 +56,7 @@ def calcElPower(flightPhase: FlightPhase, powerToWeight: float):
         case _:
             return -1
     
-    Pmot = powerToWeight * constants.Wto / (constants.ntrans * nprop)
+    Pmot = powerToWeight * (constants.Wto/9.806) / (constants.ntrans * nprop)
     if(flightPhase == FlightPhase.takeOff):
         print("pmot min: ", Pmot)
     if(flightPhase == FlightPhase.climb):
