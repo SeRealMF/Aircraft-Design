@@ -1,7 +1,7 @@
 #General
 Wto = 90350 * 9.806 #maxium takeoff weight base version in N
 Wf = 5782 * 9.806 #fuel weight in Newton Base Version
-#Wto = 984936 #STRETCH: maximum takeoff weight stretch version in N
+#Wto = 100094 * 9.806 #STRETCH: maximum takeoff weight stretch version in N
 Wto_stretch = 100094 * 9.806 #STRETCH: maximum takeoff weight stretch version in N
 #Wf = 6913 * 9.806 #fuel weight in N, Stretch Version
 # V_CRUISE = 140 #crusing speed in m/s - disused calc through general calc from mach

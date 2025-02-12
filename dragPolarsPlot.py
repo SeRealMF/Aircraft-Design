@@ -3,8 +3,8 @@ import numpy as np
 import constants as cons
 
 ar = cons.AR
-c_d0 = 0.016 #cD0 Base Version
-#c_d0 = 0.02 # cD0 Stretch Version
+c_d0 = 0.0191 #cD0 Base Version
+#c_d0 = 0.0191 # cD0 Stretch Version
 
 cl_max_clean = 1.1
 cl_max_to = 2.25
@@ -52,12 +52,12 @@ def glide_plot(cl_max, e, dcd):
 
     return cl_list, ld_list
 
-pt_cl_clean = 0.5
+pt_cl_clean = 0.526
 pt_ld_clean = ld_calc(pt_cl_clean,e_clean,0)
-pt_cl_to = 2
-pt_ld_to = ld_calc(pt_cl_to,e_to,0)
+pt_cl_to = 2.1
+pt_ld_to = ld_calc(pt_cl_to,e_to,0.023)
 pt_cl_landing = 2.5
-pt_ld_landing = ld_calc(pt_cl_landing,e_landing,cdc_landing+0)
+pt_ld_landing = ld_calc(pt_cl_landing,e_landing,0)
 
 #################################### P L O T ###########################################
 
@@ -140,9 +140,9 @@ def plot_glide_ratio():
     plt.plot(x_landing, y_landing, color='tab:blue', label='approach')
     plt.plot(x_landing_gear, y_landing_gear, color='tab:blue', label='final approach', linestyle='dashdot')
 
-    plt.scatter(pt_cl_clean, pt_ld_clean, marker='s', color='tab:green', label='estimation cruise', zorder=2)
-    plt.scatter(pt_cl_to, pt_ld_to, marker='s', color='tab:red', label='estimation take off', zorder=2)
-    plt.scatter(pt_cl_landing, pt_ld_landing, marker='s', color='tab:blue', label='estimation landing', zorder=2)
+    plt.scatter(pt_cl_clean, pt_ld_clean, marker='s', color='tab:green', label='init. est. cruise', zorder=2)
+    plt.scatter(pt_cl_to, pt_ld_to, marker='s', color='tab:red', label='init. est. take off', zorder=2)
+    plt.scatter(pt_cl_landing, pt_ld_landing, marker='s', color='tab:blue', label='init. est. landing', zorder=2)
 
     plt.xlabel('$C_{L}$')
     plt.ylabel('L/D')
@@ -152,8 +152,8 @@ def plot_glide_ratio():
 
     return "Glide Ratio Plot created!"
 
-#plot_high_speed_regime()
-#plot_low_speed_regime()
+plot_high_speed_regime()
+plot_low_speed_regime()
 plot_glide_ratio()
 
 #################################### A B L A G E ##################################################################

@@ -67,7 +67,7 @@ h_scr = 10.67
 pwsafetyfactor = cons.pwsafetyfactor
 
 cl_max_start = cons.c_Lmax_Start
-cd0_to = cons.cd0_to
+cd0_to = cons.cd0_to #cd0 = 0.04 - 0.017 = 0.023
 e0_to = cons.e_TO
 
 kappa_to = 1/(np.pi * e0_to * ar)

@@ -34,15 +34,17 @@ c_de = 0.008
 delta_cd = 0.15
 
 #aircraft dimensions
-d_fuselage = (5.56 + 4.47) / 2
-l_fuselage = cons.l_f
-d_prop = 4.74
+d_fuselage = (5.55 + 4.5) / 2
+#l_fuselage = cons.l_f
+#l_fuselage = 54 #Base
+l_fuselage = 65 #Stretch
+d_prop = 4.44
 l_prop = 4
 
 #Better coefficient estimation
 c_mean = 4.44
 re_MAC = reynoldsCalc(v_cruise, c_mean)
-#print("re_MAC: ", re_MAC)
+print("re_MAC: ", re_MAC)
 #c_dw = 0.0075*(9e6/re_MAC)**0.11*(s_wing+cons.l_f*4.5-cons.l_f*d_fuselage/2)/s_wing
 #print("c_dw:", c_dw)
 #c_df = 1.15*0.455/(math.log(reynoldsCalc(v_cruise,cons.l_f),10)**2.58)*(d_fuselage*math.pi*cons.l_f)/s_wing
@@ -54,8 +56,8 @@ re_MAC_emp = reynoldsCalc(v_cruise,4.48)
 
 s_dw = s_wing
 #s_df = 0.75 * np.pi * d_fuselage * l_fuselage
-s_df = 716 #Base Fuselage Surface Area
-#s_df = 846 #Stretch Fuselage Surface Area
+#s_df = 716 #Base Fuselage Surface Area
+s_df = 846 #Stretch Fuselage Surface Area
 s_d_prop = np.pi * d_prop * l_prop
 s_de = emp.horizontal_wing_parameter()[0] + emp.vertical_wing_parameter()[0]
 #print("S_Tailplane:", s_de)
@@ -68,7 +70,7 @@ cd0_main = cd0_main * (1 + delta_cd)
 #3.) Torenbeek Method
 #Wing
 r_w = 1 #wing form factor: 1 when self-supporting, 1.1 when strutted
-t_c = 0.12 #thickness of wing in percent
+t_c = 0.13 #thickness of wing in percent
 phi_25 = 21.4 * np.pi / 180 #sweep angle in degrees
 s = s_wing
 
@@ -77,7 +79,7 @@ cs_dw = 0.0054 * r_w * (1 + 3 * t_c * np.cos(phi_25) ** 2)
 #Fuselage
 r_f = 1.3 #0.65 + 1.5 * d_fuselage / l_fuselage
 #l_fuselage = 62.93 - (32-27)*0.8 #wide body stretch estimation
-w_fuselage = 4.47
+w_fuselage = 4.5
 #w_fuselage = 4.47 + 1.5 #wide body stretch estimation
 h_fuselage = 5.55
 
