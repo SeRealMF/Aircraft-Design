@@ -7,7 +7,7 @@ c_d0 = 0.016 #cD0 Base Version
 #c_d0 = 0.02 # cD0 Stretch Version
 
 cl_max_clean = 1.1
-cl_max_to = 2
+cl_max_to = 2.25
 cl_max_landing = 2.7
 
 e_clean = 0.8
@@ -22,6 +22,10 @@ cdc_cruise_high_speed = 0.002
 cdc_to = 0.015
 cdc_landing = 0.06
 cdc_gear = 0.02
+
+def ld_calc(cl,e,dcd):
+    ld = 1 / (c_d0 / cl + cl / (np.pi * ar * e) + dcd / cl)
+    return ld
 
 def polar_plot(cl_max, e, dcd):
     datenpunkte = 500
@@ -44,10 +48,16 @@ def glide_plot(cl_max, e, dcd):
     for i in range(0, datenpunkte - 1):
         cl = cl_max / datenpunkte * (i + 1)
         cl_list.append(cl)
-        ld = 1/(c_d0/cl + cl/(np.pi * ar * e) + dcd/cl)
-        ld_list.append(ld)
+        ld_list.append(ld_calc(cl,e,dcd))
 
     return cl_list, ld_list
+
+pt_cl_clean = 0.5
+pt_ld_clean = ld_calc(pt_cl_clean,e_clean,0)
+pt_cl_to = 2
+pt_ld_to = ld_calc(pt_cl_to,e_to,0)
+pt_cl_landing = 2.5
+pt_ld_landing = ld_calc(pt_cl_landing,e_landing,cdc_landing+0)
 
 #################################### P L O T ###########################################
 
@@ -130,9 +140,9 @@ def plot_glide_ratio():
     plt.plot(x_landing, y_landing, color='tab:blue', label='approach')
     plt.plot(x_landing_gear, y_landing_gear, color='tab:blue', label='final approach', linestyle='dashdot')
 
-    plt.scatter(0.5, 18, marker='s', color='tab:green', label='estimation cruise', zorder=2)
-    plt.scatter(1.5, 10, marker='s', color='tab:red', label='estimation take off', zorder=2)
-    plt.scatter(2, 5, marker='s', color='tab:blue', label='estimation landing', zorder=2)
+    plt.scatter(pt_cl_clean, pt_ld_clean, marker='s', color='tab:green', label='estimation cruise', zorder=2)
+    plt.scatter(pt_cl_to, pt_ld_to, marker='s', color='tab:red', label='estimation take off', zorder=2)
+    plt.scatter(pt_cl_landing, pt_ld_landing, marker='s', color='tab:blue', label='estimation landing', zorder=2)
 
     plt.xlabel('$C_{L}$')
     plt.ylabel('L/D')
