@@ -116,3 +116,33 @@ oversizingFc = 0.4 #percent
 Dens_powerBostBat = 7.5 #kWh/l boooooooooooooster battery
 DensW_powerBostBat = 10 #kWh/kg boooooooooooooster battery
 n_FCcool = 0.8
+
+#Wing Thorenbeck Weight
+
+const = 4.58 * 10**(-3) # Empirische Konst aus Buch dim los
+bref = 1.905 # Meter Empi
+klamb = (1+taper)**(0.4) #Dumm
+ke = 0.9 #Def by engines num#
+kuc = 0.95 #Under mounted on fuse
+
+Lamda_LE = 24.25 #Sweep an der vorderkante (slats)
+Lamda_12 = 18.55 #Sweep mittellinie
+
+const_kst = 9.06*10**(-4)#Kosnt in kst
+
+vD = None#Georg macht das
+kb = 1.0 #Krakträger Wing
+
+cons_Wtef = 2.706 #Jaaaa
+
+kf1 = 1.3 #Flap config (Double slot)
+kf2 = 1 #Flap Vanes (Easy)
+
+delta_f = 40 #Flap angle def
+
+Lamda_f = 12.57 #Flap sweep
+
+t_c_f = 0.13 #NEEDS CHECK
+
+
+
