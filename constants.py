@@ -148,4 +148,11 @@ cons_Wlef = 30 #kg/m^2 bei ca 90 ton take off weight slats weight
 S_slat = 30 #m^2
 
 
+#Emp Thorenbeck
+
+k_wt = 0.64 #Nein
+
+Cor_factor_Ttail = 1.05 #NOT in Thorenbeck assumption by me. 
+
+
 
