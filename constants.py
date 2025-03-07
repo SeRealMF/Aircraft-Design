@@ -130,7 +130,7 @@ Lamda_12 = 18.55 #Sweep mittellinie
 
 const_kst = 9.06*10**(-4)#Kosnt in kst
 
-vD = None#Georg macht das
+vD = 200#Georg macht das
 kb = 1.0 #Krakträger Wing
 
 cons_Wtef = 2.706 #Jaaaa
@@ -143,6 +143,9 @@ delta_f = 40 #Flap angle def
 Lamda_f = 12.57 #Flap sweep
 
 t_c_f = 0.13 #NEEDS CHECK
+
+cons_Wlef = 30 #kg/m^2 bei ca 90 ton take off weight slats weight 
+S_slat = 30 #m^2
 
 
 

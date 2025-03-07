@@ -8,7 +8,7 @@ import isa
 
 
 
-def Calc_kst(b,con_kst,Lamda_LE,Wdes,vD,t_c,Lamda_12):
+def Calc_kst():
     b = wing_parameter(con.AR,con.taper)[0]/2
     con_kst = con.const_kst
     Lamda_LE = con.Lamda_LE
@@ -21,7 +21,7 @@ def Calc_kst(b,con_kst,Lamda_LE,Wdes,vD,t_c,Lamda_12):
 
     return(kst)
 
-def Clac_nult(Wdes):
+def Clac_nult():
     Wdes = (con.Wto_stretch / 9.806) - (con.m_fStr)
 
     Wdes = Wdes * 2.205 #Kg to pound
@@ -34,7 +34,7 @@ def Clac_nult(Wdes):
     return(nult)
 
 
-def Calc_Wtef(Sf, cons_Wtef, kf1, kf2, bfs, vlf, delta_f, Lamda_f,t_c_f):
+def Calc_Wtef():
     kf = con.kf1 + con.kf2
     cons_Wtef = con.cons_Wtef
     def Sub_calc_Sf():
@@ -59,21 +59,45 @@ def Calc_Wtef(Sf, cons_Wtef, kf1, kf2, bfs, vlf, delta_f, Lamda_f,t_c_f):
     return(Wtef)
     
 
-def Calc_Ww(Wwbasic_it, Whld, Wsp):
-    Wwbasic_it = 100
+def Calc_Ww():
+    Wtef = Calc_Wtef() 
+    Wlef = con.S_slat * con.cons_Wlef
+    Whld = Wtef + Wlef
+    b = wing_parameter(con.AR,con.taper)[0]/2
+    bs = b / np.cos(con.Lamda_12*(np.pi/180))
+    ke = con.ke
+    kuc = con.kuc
+    Wdes = (con.Wto_stretch / 9.806) - (con.m_fStr)
+
+    kno = 1 + (con.bref / bs)**(0.5)
+    
+
+
+
+
+
+    Wwbasic = (con.Wto_stretch / 9.806)/10
     f = 100
+    print("Iterative Calculation")
+    print("###############################################")
 
-    while f >= 2:
-        Wwbasic_it * 1
+    while f >= 0.0001:
+        Wwbasic_it = con.const * kno * con.klamb *ke *kuc *Calc_kst() *(con.kb * Clac_nult() * (Wdes - 0.8 * (500/491*Wwbasic + 600/491 * Whld)))**(0.55)*b**(1.675)*t_c**(-0.45)*(np.cos(con.Lamda_12*np.pi/180))**(-1.325)
+        f =abs((Wwbasic_it - Wwbasic) / Wwbasic)
+        print(f"Pre {Wwbasic} It{Wwbasic_it}")
+        Wwbasic = Wwbasic_it
+    
+    Ww = 500/491 * Wwbasic + 600/491 *  Whld 
+    print("###############################################")
 
-    #Whld = Wtef + Wlef 
+    return(Ww)
 
 
 
 
 
 
-def Wing_weight_basic(const, kno, klamb, ke, kuc, kst, kb, nult, Wdes, Ww, b, t_c, Lamda_12):
+def Wing_weight_basic():
     const = con.const
     kno = 1 + (con.bref / bs)**(0.5)
     klamb = con.klamb
@@ -90,5 +114,4 @@ def Wing_weight_basic(const, kno, klamb, ke, kuc, kst, kb, nult, Wdes, Ww, b, t_
 
 
     
-print(Calc_kst())
-
+print(f"Ww = {Calc_Ww()}")

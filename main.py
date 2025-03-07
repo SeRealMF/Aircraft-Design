@@ -19,6 +19,7 @@ import numpy as np
 import Prop_Dim_V1
 import constants as con
 import generalCalc
+import Wing_thorenbeck
 
 
 Values_Climb_OEI = []
@@ -108,3 +109,6 @@ print("Minimum FC Stack weight: ", W_fcStackBase)
 print("Minimum FC System weight: ", W_sys)
 print("Minimum FC Cooling weight: ", W_cool)
 print("Minimum Bat Weight:", W_Bat)
+
+Ww = Wing_thorenbeck.Calc_Ww()
+print(f"Wing Weight nach Thorenbeck apendix C = {Ww} [kg]")
