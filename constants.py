@@ -155,4 +155,31 @@ k_wt = 0.64 #Nein
 Cor_factor_Ttail = 1.05 #NOT in Thorenbeck assumption by me. 
 
 
+#Fus Tohrenbeck
+
+kwf = 0.32 #Nein
+lt = 29.83 # m Length fus to tail 
+hf = 5.48 # m height fus
+bf = 4.5 #m with fus
+SG = 964.6 #m^2 Wetted fus
+
+
+#Under Thorenbeck
+
+kuc = 1.08 #Hiegh wing
+A_u_m = 18.1
+B_u_m = 0.131
+C_u_m = 0.019
+D_u_m = 2.23*10**(-5)
+
+A_u_n = 9.1
+B_u_n = 0.082
+C_u_n = 0
+D_u_n = 2.97*10**(-6)
+
+#Control Thorenbeck
+
+ksc = 0.44 # Wert für control anname da neu
+
+
 

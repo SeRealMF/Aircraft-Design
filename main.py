@@ -10,9 +10,11 @@ import lhCalc
 #from cruise import calcPowerToWeightCruiseBaseOEI, calcPowerToWeightCruiseBase
 #from Climb_OEI_V1 import Climb_OEI_Out
 #from Climb_service_V1 import Clim_Serv_out
-
+from wing_area import phi_25_deg
+from cruise import calcVCruise
 #Test
-from Test_Power_Calc import calcPowerToWeightCruiseBase, calcPowerToWeightCruiseBaseOEI, Climb_OEI_Out, Clim_Serv_out, takeOff_pw_ws
+
+from Test_Power_Calc import calcPowerToWeightCruiseBase, calcPowerToWeightCruiseBaseOEI, Climb_OEI_Out, Clim_Serv_out, takeOff_pw_ws, getWS_Max
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -21,7 +23,10 @@ import constants as con
 import generalCalc
 import Wing_thorenbeck
 import Empenage_thorenbeck
-
+import Fuselage_Thorenbeck
+import Under_Thorenbeck
+import Contro_Thorenbeck
+import pandas as pd
 
 Values_Climb_OEI = []
 Values_calcPowerToWeightCruiseBaseOEI = []
@@ -116,3 +121,19 @@ print(f"Wing Weight nach Thorenbeck apendix C = {Ww} [kg]")
 
 W_tail = Empenage_thorenbeck.Calc_W_tail()
 print(f"Empenage Weight nach Thorenbeck Kapitel 8 = {W_tail} [kg]")
+
+W_fus = Fuselage_Thorenbeck.Calc_fus()
+print(f"Fus Weight nach Thorenbeck Kapitel 8 + Apendix b d = {W_fus} [kg]")
+
+W_under = Under_Thorenbeck.Calc_under()
+print(f"Under Weifght nach Thorenbeck Kapitel 8 = {W_under} [kg]")
+
+W_control = Contro_Thorenbeck.Calc_Wsc()
+print(f"Control Weight nach Thorenbeck Kapitel 8 = {W_control} [kg]")
+
+
+
+d = {'WS': getWS_Max(), 'v_s': calcVCruise(), 'v_m': con.ma, 'AR' : con.AR, 'taper' : con.taper, 'Mto' : (con.Wto /9.81)/1000, 'sweep': phi_25_deg}
+ser = pd.Series(data=d, index=['WS', 'v_s', 'v_m', 'AR', 'taper', 'Mto', 'sweep'])
+
+ser.to_excel('values.xlsx', sheet_name='Calc')
