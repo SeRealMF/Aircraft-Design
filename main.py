@@ -26,6 +26,8 @@ import Empenage_thorenbeck
 import Fuselage_Thorenbeck
 import Under_Thorenbeck
 import Contro_Thorenbeck
+import Engines_Thorenbeck
+import Airframe_service_etc
 import pandas as pd
 
 Values_Climb_OEI = []
@@ -131,6 +133,14 @@ print(f"Under Weifght nach Thorenbeck Kapitel 8 = {W_under} [kg]")
 W_control = Contro_Thorenbeck.Calc_Wsc()
 print(f"Control Weight nach Thorenbeck Kapitel 8 = {W_control} [kg]")
 
+W_nacel = Engines_Thorenbeck.Calc_Wn()
+print(f"Nacel Weight nach Thorenbeck Kapitel 8 = {W_nacel} [kg]")
+
+W_engins = Engines_Thorenbeck.Calc_We()
+print(f"Engine Weight nach Thorenbeck Kapitel 8 = {W_engins} [kg]")
+
+Wieg = Airframe_service_etc.Calc_Wieg()
+print(f"Instruments etc. Weight nach Thorenbeck Kapitel 8 = {Wieg} [kg]")
 
 
 d = {'WS': getWS_Max(), 'v_s': calcVCruise(), 'v_m': con.ma, 'AR' : con.AR, 'taper' : con.taper, 'Mto' : (con.Wto /9.81)/1000, 'sweep': phi_25_deg}

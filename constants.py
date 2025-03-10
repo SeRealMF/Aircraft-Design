@@ -181,5 +181,26 @@ D_u_n = 2.97*10**(-6)
 
 ksc = 0.44 # Wert für control anname da neu
 
+#Engine Thorenbeck
+
+Wn_constant = 0.0635 #kg per PS
+
+
+
+kpg = 1.35 
+
+M_engine = 750 #Engine Elektro in kg
+
+#Service Thorenbeck
+
+kieg = 0.347 
+
+RC = 6800 #km
+
+mOE_s = 62300 #kg
+
+
+
+
 
 
