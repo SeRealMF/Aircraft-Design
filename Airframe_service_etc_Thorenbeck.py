@@ -2,12 +2,7 @@ import numpy as np
 import constants as con
 import pandas as pd
 import math
-from Drag_Estimation import t_c
-from wing_area import phi_25_deg, wing_parameter
 import isa
-from Wing_thorenbeck import Clac_nult
-from Drag_Estimation import s_de
-from Prop_Dim_V1 import Engine_power
 
 
 def Calc_Wieg():
@@ -19,5 +14,13 @@ def Calc_Wieg():
 
     return(Wieg)
 
-def Calc_Whpe():
-    WE 
+
+
+def Calc_Whp(): #Berechnung nach Formel 8-38, Berechnung Hydraulics and Pneumatics
+    WDE = con.mOE_s
+    Whp = 0.011 * WDE + 181 #kg
+
+    return(Whp)
+
+
+

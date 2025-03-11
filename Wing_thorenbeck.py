@@ -3,7 +3,7 @@ import constants as con
 import pandas as pd
 import math
 from Drag_Estimation import t_c
-from wing_area import phi_25_deg, wing_parameter
+from wing_area import wing_parameter
 import isa
 
 
