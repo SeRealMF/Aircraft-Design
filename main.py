@@ -30,6 +30,22 @@ import Engines_Thorenbeck
 import Airframe_service_etc_Thorenbeck
 import pandas as pd
 
+####################
+#Dictoniary mit den Werten für die Summe
+
+Momente = {
+    "Weights" : 0,
+    "Mom_x" : 0,
+    "Mom_z" : 0,
+    "Mom_y" : 0,
+}
+
+
+
+###################
+
+from Class_build import Moment
+
 Values_Climb_OEI = []
 Values_calcPowerToWeightCruiseBaseOEI = []
 Values_calcPowerToWeightCruiseBase = []
@@ -120,12 +136,16 @@ print("Minimum Bat Weight:", W_Bat)
 
 Ww = Wing_thorenbeck.Calc_Ww()
 print(f"Wing Weight nach Thorenbeck apendix C = {Ww} [kg]")
+Moment(Ww,10,-5,Momente)
 
 W_tail = Empenage_thorenbeck.Calc_W_tail()
 print(f"Empenage Weight nach Thorenbeck Kapitel 8 = {W_tail} [kg]")
+Moment(W_tail,50,Momente)
+
 
 W_fus = Fuselage_Thorenbeck.Calc_fus()
 print(f"Fus Weight nach Thorenbeck Kapitel 8 + Apendix b d = {W_fus} [kg]")
+Moment(W_fus,25,2,Momente)
 
 W_under = Under_Thorenbeck.Calc_under()
 print(f"Under Weifght nach Thorenbeck Kapitel 8 = {W_under} [kg]")
@@ -148,7 +168,7 @@ print(f"Hydraulics and pneumatics Weight nach Thorenbeck Kapitel 8 = {Whp} [kg]"
 
 
 
-
+print(Momente)
 
 
 
