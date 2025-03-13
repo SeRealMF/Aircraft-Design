@@ -30,21 +30,78 @@ import Engines_Thorenbeck
 import Airframe_service_etc_Thorenbeck
 import pandas as pd
 
-####################
+
+###############################################################################################################
 #Dictoniary mit den Werten für die Summe
 
-Momente = {
+Momenten_Summe = {
     "Weights" : 0,
     "Mom_x" : 0,
     "Mom_z" : 0,
     "Mom_y" : 0,
 }
 
+Momenten_liste = {
+    "Weights" : [],
+    "Mom_x" : [],
+    "L_x" : [],
+    "Mom_z" : [],
+    "L_z" : [],
+    "Mom_y" : [],
+    "L_y" : [],
+}
 
 
-###################
 
-from Class_build import Moment
+
+
+class Moment:
+    def __init__(self, Weight, X_Dis_m, Z_Dis_m = 0, Y_Dis_m = 0):
+
+
+
+
+        self.Weight = float(Weight)
+        self.x = float(X_Dis_m)
+        self.z = float(Z_Dis_m)
+        self.y = float(Y_Dis_m)
+
+        self.Mom_x = self.x * self.Weight
+
+        if self.z != 0:
+            self.Mom_z = self.z * self.Weight
+        else: self.Mom_z = 0
+
+        if self.y != 0:
+            self.Mom_y = self.y * self.Weight
+        else: self.Mom_y = 0
+
+        """if "Weights" not in self.dic.keys():
+            self.dic["Weights"] = 0"""
+
+        Momenten_Summe["Weights"] += self.Weight
+        Momenten_Summe["Mom_x"] += self.Mom_x
+        Momenten_Summe["Mom_z"] += self.Mom_z
+        Momenten_Summe["Mom_y"] += self.Mom_y
+
+        Momenten_liste["Weights"].append(self.Weight)
+        Momenten_liste["Mom_x"].append(self.Mom_x)
+        Momenten_liste["L_x"].append(self.x)
+        Momenten_liste["Mom_z"].append(self.Mom_z)
+        Momenten_liste["L_z"].append(self.z)
+        Momenten_liste["Mom_y"].append(self.Mom_y)
+        Momenten_liste["L_y"].append(self.y)
+
+
+
+        
+
+
+
+
+#Ws Stuff##############################################################################################
+
+
 
 Values_Climb_OEI = []
 Values_calcPowerToWeightCruiseBaseOEI = []
@@ -71,7 +128,7 @@ for i in WS_Values:
 
 print(getLandingDistance())
 
-#plotting
+#plotting############################################################################################
 
 powerToWeightChosen = 20
 x = WS_Values
@@ -101,7 +158,7 @@ Prop_Stretch = Prop_Dim_V1.Prop_size(con.P_s)
 print("Prop_Base",Prop_Base)
 print("Prop_Stretch",Prop_Stretch)
 
-#calcs for lh
+#calcs for lh ################################################################################################
 P_elCr = lhCalc.calcElPower(lhCalc.FlightPhase.cruise, powerToWeightChosen)
 P_elTo = lhCalc.calcElPower(lhCalc.FlightPhase.takeOff, powerToWeightChosen)
 lhCalc.calcElPower(lhCalc.FlightPhase.climb, powerToWeightChosen)
@@ -134,18 +191,22 @@ print("Minimum FC System weight: ", W_sys)
 print("Minimum FC Cooling weight: ", W_cool)
 print("Minimum Bat Weight:", W_Bat)
 
+
+
+#Weights Calculations######################################################################################################
+
 Ww = Wing_thorenbeck.Calc_Ww()
 print(f"Wing Weight nach Thorenbeck apendix C = {Ww} [kg]")
-Moment(Ww,10,-5,Momente)
+Moment(Ww,10,-5)
 
 W_tail = Empenage_thorenbeck.Calc_W_tail()
 print(f"Empenage Weight nach Thorenbeck Kapitel 8 = {W_tail} [kg]")
-Moment(W_tail,50,Momente)
+Moment(W_tail,50)
 
 
 W_fus = Fuselage_Thorenbeck.Calc_fus()
 print(f"Fus Weight nach Thorenbeck Kapitel 8 + Apendix b d = {W_fus} [kg]")
-Moment(W_fus,25,2,Momente)
+Moment(W_fus,25,2)
 
 W_under = Under_Thorenbeck.Calc_under()
 print(f"Under Weifght nach Thorenbeck Kapitel 8 = {W_under} [kg]")
@@ -168,8 +229,50 @@ print(f"Hydraulics and pneumatics Weight nach Thorenbeck Kapitel 8 = {Whp} [kg]"
 
 
 
-print(Momente)
+print(Momenten_Summe)
+print(Momenten_liste)
 
+# "Weights" : [],
+#     "Mom_x" : [],
+#     "L_x" : [],
+#     "Mom_z" : [],
+#     "L_z" : [],
+#     "Mom_y" : [],
+#     "L_y" : [],
+
+
+# W_l = Momenten_liste['Weights']
+# M_x_l = Momenten_liste['Mom_x']
+# L_x_l = Momenten_liste["L_x"]
+# M_z_l = Momenten_liste['Mom_z']
+# L_z_l = Momenten_liste["L_z"]
+# M_y_l = Momenten_liste['Mom_y']
+# L_y_l = Momenten_liste["L_y"],
+
+Data_0 ={'Weights': Momenten_liste['Weights'],
+     'Momente_X': Momenten_liste['Mom_x'],
+     'L_x': Momenten_liste["L_x"],
+     'Momente_Z': Momenten_liste['Mom_z'],
+     'L_z': Momenten_liste["L_z"],
+     'Momente_y': Momenten_liste['Mom_y'],
+     'L_y': Momenten_liste["L_y"],
+      }
+df_0 = pd.DataFrame.from_dict(Momenten_liste)
+
+
+
+df_0.to_excel('Momente.xlsx', sheet_name='Calculation', index=False,)
+
+df_1 = pd.DataFrame({'Weights': Momenten_Summe['Weights'],
+        'Momente_X': Momenten_Summe['Mom_x'],
+        'Momente_Z': Momenten_Summe['Mom_z'],
+        'Momente_y': Momenten_Summe['Mom_y'],
+        },
+        index=(10,20,30,40)
+    )  
+
+
+df_1.to_excel('Momenten_summen.xlsx', sheet_name='Summen')
 
 
 d = {'WS': getWS_Max(), 'v_s': calcVCruise(), 'v_m': con.ma, 'AR' : con.AR, 'taper' : con.taper, 'Mto' : (con.Wto /9.81)/1000, 'sweep': phi_25_deg}
