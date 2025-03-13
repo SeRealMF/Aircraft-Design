@@ -113,3 +113,5 @@ r_re = 47 * re_fuselage ** (-0.2)
 cd0_toren = r_re * r_uc * (cs_dw + cs_df + cs_de + cs_dn) / s_wing
 
 print(cd0_roskam, cd0_main, cd0_toren)
+
+# Test
