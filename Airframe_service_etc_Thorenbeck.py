@@ -41,7 +41,7 @@ def Calc_Wfurn(): # Berechnung 8.4.3.d nach Formel 8-44 oder nach Tabelle 8-12
 
     W_furn_2 = 29.9 * 72 + 25.4 * 30 # mass per seating block times block (page 76, table 3-2)
 
-    W_furn_3 = 113.4 * 2 + 43.3 + 29.5 # 2 times main meal galley + 1 x snack pantry + 1 x coffee bar
+    W_furn_3 = 113.4 + 29.5 # 1 x main meal galley + 1 x coffee bar
 
     S_cf = 200 # m^2, muss noch nachgesehen werden
     W_furn_4 = 0.94 * S_cf**(1.15)
