@@ -211,6 +211,8 @@ Moment(W_fus,25,2)
 W_under = Under_Thorenbeck.Calc_under()
 print(f"Under Weifght nach Thorenbeck Kapitel 8 = {W_under} [kg]")
 
+Moment(W_under,10,-2)
+
 W_control = Contro_Thorenbeck.Calc_Wsc()
 print(f"Control Weight nach Thorenbeck Kapitel 8 = {W_control} [kg]")
 
@@ -225,6 +227,9 @@ print(f"Instruments etc. Weight nach Thorenbeck Kapitel 8 = {Wieg} [kg]")
 
 Whp = Airframe_service_etc_Thorenbeck.Calc_Whp()
 print(f"Hydraulics and pneumatics Weight nach Thorenbeck Kapitel 8 = {Whp} [kg]")
+
+Wel = Airframe_service_etc_Thorenbeck.Calc_Wel()
+print(f"Electrical Weight nach Thorenbeck Kapitel 8 = {Wel} [kg]")
 
 
 

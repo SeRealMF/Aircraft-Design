@@ -115,3 +115,6 @@ def Wing_weight_basic():
 
     
 print(f"Ww = {Calc_Ww()}")
+
+
+print(Calc_kst())

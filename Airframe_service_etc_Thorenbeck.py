@@ -24,3 +24,9 @@ def Calc_Whp(): #Berechnung nach Formel 8-38, Berechnung Hydraulics and Pneumati
 
 
 
+def Calc_Wel(): #Berechnung nach Formel 8-40, Berechnung Electrical, Annahme über die Nutzung der DC formel da ohnehin sehr abweichend für LH2
+    
+    Wto = con.Wto_stretch/9.806
+    Wel = 0.02 * Wto + 181 #kg
+
+    return(Wel)
