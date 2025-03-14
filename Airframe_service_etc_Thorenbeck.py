@@ -64,5 +64,3 @@ def Calc_Wfurn(): # Berechnung 8.4.3.d nach Formel 8-44 oder nach Tabelle 8-12
     W_furn = W_furn_1 + W_furn_2 + W_furn_3 + W_furn_4 + W_furn_5 + W_furn_6 + W_furn_7 + W_furn_8 + W_furn_9 + W_furn_10
 
     return(W_furn)
-
-print(Calc_Wfurn())
